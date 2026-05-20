@@ -761,9 +761,150 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
 .cart-fab-spacer{height:80px}
 @media (min-width:780px){.cart-fab-spacer{display:none}}
 
+/* ═══════════════════════════════════════════════════════════════════════
+   ITERATION 3 — Dunkin/Starbucks influence + mode-mobile phone frame
+   Applies on top of the existing theme rules.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* page wrapper just lets us scope max-width when in mode-mobile on desktop */
+.page{display:block;width:100%}
+
+/* ── PHONE-FRAME ── mode-mobile on desktop locks the layout to phone width */
+@media (min-width:780px){
+  body.mode-mobile{
+    background:linear-gradient(180deg,#1a1818 0%,#0a0a0a 100%);
+    min-height:100vh;
+    padding:32px 0 56px;
+  }
+  body.mode-mobile .page{
+    max-width:414px;
+    margin:0 auto;
+    background:var(--bg);
+    border-radius:42px;
+    overflow:hidden;
+    box-shadow:0 60px 140px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+    position:relative;
+  }
+  body.mode-mobile .page::before{
+    content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:120px;height:24px;background:#0a0a0a;border-radius:0 0 14px 14px;z-index:60;
+  }
+  body.mode-mobile .page::after{
+    content:'';position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+    width:104px;height:4px;background:rgba(255,255,255,0.15);border-radius:99px;z-index:60;pointer-events:none;
+  }
+  /* nav inside the phone frame, sticky inside the frame's scroll */
+  body.mode-mobile nav.topnav{position:sticky;top:0}
+  /* cart fab + modal align inside phone frame */
+  body.mode-mobile .cart-fab{
+    left:calc(50% - 207px + 14px);
+    right:calc(50% - 207px + 14px);
+    bottom:46px;
+  }
+  body.mode-mobile .modal{
+    left:50%;right:auto;width:414px;max-width:414px;
+    transform:translateX(-50%);bottom:0;border-radius:24px 24px 42px 42px;
+    max-height:80vh;
+  }
+  body.mode-mobile .modal.is-open{transform:translateX(-50%)}
+  /* never show desktop hero art aspect-ratio override */
+  body.mode-mobile .hero{padding:24px 18px 28px}
+  body.mode-mobile .hero-grid{grid-template-columns:1fr !important;gap:18px}
+  body.mode-mobile .hero-art{aspect-ratio:16/10}
+  body.mode-mobile .menu-block-grid{grid-template-columns:1fr 1fr !important;gap:10px}
+  body.mode-mobile .menu-block-side{display:contents}
+  /* mobile-frame hero text sizes — prevent bleed past the phone frame */
+  body.mode-mobile .hero-h{font-size:42px !important;line-height:0.95 !important;letter-spacing:-1px !important}
+  body.mode-mobile.theme-b .hero-h{font-size:44px !important;letter-spacing:-1.5px !important}
+  body.mode-mobile.theme-c .hero-h{font-size:46px !important;line-height:0.88 !important}
+  /* slim mobile nav inside the frame */
+  body.mode-mobile nav.topnav{height:60px !important;padding:0 16px !important}
+  body.mode-mobile .brand-est{display:none !important}
+  body.mode-mobile .brand-wordmark{height:38px !important}
+  body.mode-mobile .nav-pill{display:none !important}
+}
+
+/* ── BIGGER LOGO IN NAV ── */
+nav.topnav{height:72px}
+@media (min-width:780px){nav.topnav{height:84px;padding:0 32px}}
+body.mode-mobile nav.topnav{height:64px}
+.brand-wordmark{height:48px}
+@media (min-width:560px){.brand-wordmark{height:54px}}
+@media (min-width:780px){.brand-wordmark{height:64px}}
+body.mode-mobile .brand-wordmark{height:42px !important}
+body.theme-c nav.topnav{height:76px}
+@media (min-width:780px){body.theme-c nav.topnav{height:88px}}
+
+/* ── BIGGER SECTION HEADINGS ── (Dunkin-scale type) */
+.menu-block-title{font-size:42px !important;line-height:0.95 !important}
+@media (min-width:780px){.menu-block-title{font-size:64px !important}}
+@media (min-width:1100px){.menu-block-title{font-size:76px !important}}
+body.theme-c .menu-block-title{font-size:48px !important}
+@media (min-width:780px){body.theme-c .menu-block-title{font-size:78px !important}}
+@media (min-width:1100px){body.theme-c .menu-block-title{font-size:96px !important}}
+body.mode-mobile .menu-block-title{font-size:38px !important}
+body.mode-mobile.theme-c .menu-block-title{font-size:42px !important}
+
+.menu-head h2{font-size:46px !important}
+@media (min-width:780px){.menu-head h2{font-size:72px !important}}
+body.theme-c .menu-head h2{font-size:54px !important}
+@media (min-width:780px){body.theme-c .menu-head h2{font-size:88px !important}}
+body.mode-mobile .menu-head h2{font-size:40px !important}
+
+.menu-block-num{font-size:18px !important}
+@media (min-width:780px){.menu-block-num{font-size:24px !important}}
+
+/* ── AUTO-FIT GRID (no empty cells, no bleeds) on mode-web ── */
+@media (min-width:780px){
+  body.mode-web .menu-block-grid{
+    display:grid !important;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap:16px !important;
+    align-items:stretch;
+  }
+  body.mode-web .menu-block-side{
+    display:contents !important;
+  }
+  /* hero card spans 2 cols on desktop for visual emphasis, 1 if narrow */
+  body.mode-web .menu-hero-card{
+    grid-column:span 2;
+    grid-row:span 2;
+  }
+  body.mode-web .menu-hero-card .card-img{aspect-ratio:1/1}
+  body.mode-web .menu-hero-card .card-img .icon{font-size:140px}
+}
+@media (max-width:1099px){
+  body.mode-web .menu-hero-card{grid-column:span 2;grid-row:span 1}
+}
+
+/* ── DUNKIN-STYLE WHITESPACE BUMP ── */
+.menu-section{padding:48px 0 56px}
+@media (min-width:780px){.menu-section{padding:80px 0 96px}}
+body.mode-mobile .menu-section{padding:32px 0 48px}
+.menu-blocks{gap:48px}
+@media (min-width:780px){.menu-blocks{gap:72px}}
+body.mode-mobile .menu-blocks{gap:36px}
+
+/* ── ICON CHIPS for benefits strip (Dunkin-style circle icon) ── */
+.benefit{padding:8px 16px 8px 8px}
+.benefit::before{content:'';display:none}
+@media (min-width:780px){
+  body.mode-web .benefit{padding:10px 18px 10px 10px;font-size:12px}
+}
+
+/* ── HERO TUNES: balance text/image on mode-web ── */
+@media (min-width:780px){
+  body.mode-web .hero{padding:80px 32px 64px}
+  body.mode-web .hero-h{font-size:88px}
+  body.mode-web.theme-a .hero-h{font-size:92px}
+  body.mode-web.theme-c .hero-h{font-size:108px}
+}
+
 </style>
 </head>
-<body class="theme-a">
+<body class="theme-a mode-web">
+
+<main class="page">
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      NAV
@@ -995,6 +1136,8 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
   </div>
 </footer>
 
+</main>
+
 <!-- spacer for floating cart on mobile -->
 <div class="cart-fab-spacer"></div>
 
@@ -1020,6 +1163,6 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
   <div id="modal-content"><!-- filled dynamically --></div>
 </div>
 
-<script src="app.js?v=4"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

@@ -6,70 +6,63 @@
 (() => {
   'use strict';
 
-  /* ───── theme selection from URL ───── */
+  /* ───── variant → theme family + layout mode ─────
+     a = heritage  · mobile     d = cinematic · web
+     b = heritage  · web        e = pop       · mobile
+     c = cinematic · mobile     f = pop       · web                       */
+  const VARIANT_MAP = {
+    a: { theme:'a', mode:'mobile' },  // heritage mobile
+    b: { theme:'a', mode:'web' },     // heritage web
+    c: { theme:'b', mode:'mobile' },  // cinematic mobile
+    d: { theme:'b', mode:'web' },     // cinematic web
+    e: { theme:'c', mode:'mobile' },  // pop mobile
+    f: { theme:'c', mode:'web' },     // pop web
+  };
   const params = new URLSearchParams(window.location.search);
-  const variant = (params.get('v') || 'a').toLowerCase();
-  const theme = ['a','b','c','d','e','f'].includes(variant) ? variant : 'a';
-  document.body.classList.remove('theme-a','theme-b','theme-c','theme-d','theme-e','theme-f');
-  document.body.classList.add('theme-' + theme);
+  // variant comes from ?v=… or from the trailing path segment (/aryze/a, /aryze/b, …)
+  const pathTail = (window.location.pathname.match(/\/aryze\/([a-f])\/?$/i) || [])[1];
+  const variant = ((params.get('v') || pathTail || 'a') + '').toLowerCase();
+  const cfg = VARIANT_MAP[variant] || VARIANT_MAP.a;
+  document.body.classList.remove(
+    'theme-a','theme-b','theme-c','theme-d','theme-e','theme-f',
+    'mode-mobile','mode-web'
+  );
+  document.body.classList.add('theme-' + cfg.theme, 'mode-' + cfg.mode);
+  // legacy: many JS lookups still use `theme` as the heroes key
+  const theme = variant;
 
-  /* ───── hero copy + theme-specific brand assets per variant ───── */
+  /* ───── hero copy per variant. Mobile/web pairs share family identity ───── */
+  const HERITAGE_HERO = {
+    eyebrow: 'Healthy Drive-Thru · Phoenix, AZ · EST 2026',
+    h: 'A healthy<br>drive-thru,<br><em>made for the</em><br>desert<span class="accent">.</span>',
+    tag: '— made fresh, made fast —',
+    pitch: "Phoenix has run on gas-station food and good intentions for too long. Aryze is the drive-thru we wished existed — organic açaí, line-caught poke, cold-press juice, breakfast burritos that don't apologize.",
+    art: 'desert-photo',
+    wordmark: 'assets/logos/wordmark-navy.png',
+    badge: 'assets/logos/oval-badge-light.png',
+  };
+  const CINEMATIC_HERO = {
+    eyebrow: 'The Healthy Drive-Thru · Phoenix, AZ · EST 2026',
+    h: '115° outside.<br><span class="accent">Organic</span><br><span class="stroke">inside.</span>',
+    tag: '— roll through · eat clean —',
+    pitch: "Phoenix's first actually-healthy drive-thru. Line-caught poke, organic açaí, cold-press juice, protein shakes that actually contain protein. Served from a white-brick window faster than you can find your wallet.",
+    art: 'desert-cinematic',
+    wordmark: 'assets/logos/wordmark-teal.png',
+    badge: 'assets/logos/oval-badge-dark.png',
+  };
+  const POP_HERO = {
+    eyebrow: 'The Healthy Drive-Thru',
+    h: 'Roll<br>through.<br><span class="accent">Eat clean.</span><br><span class="teal">Repeat.</span>',
+    tag: '— made fresh, made fast —',
+    pitch: "A drive-thru window in downtown Phoenix that hands you organic açaí, line-caught poke, cold-press juice, and protein shakes that actually contain protein. From a white-brick building. With a sun on the wall.",
+    art: 'storefront',
+    wordmark: 'assets/logos/wordmark-navy.png',
+    badge: 'assets/logos/oval-badge-light.png',
+  };
   const HEROES = {
-    a: {
-      eyebrow: 'Healthy Drive-Thru · Phoenix, AZ · EST 2026',
-      h: 'A healthy<br>drive-thru,<br><em>made for the</em><br>desert<span class="accent">.</span>',
-      tag: '— made fresh, made fast —',
-      pitch: "Phoenix has run on gas-station food and good intentions for too long. Aryze is the drive-thru we wished existed — organic açaí, line-caught poke, cold-press juice, breakfast burritos that don't apologize. Roll up. Eat clean. Repeat.",
-      art: 'desert-photo',
-      wordmark: 'assets/logos/wordmark-navy.png',
-      badge: 'assets/logos/oval-badge-light.png',
-    },
-    b: {
-      eyebrow: 'The Healthy Drive-Thru · Phoenix, AZ · EST 2026',
-      h: '115° outside.<br><span class="accent">Organic</span><br><span class="stroke">inside.</span>',
-      tag: '— roll through · eat clean —',
-      pitch: "Phoenix's first actually-healthy drive-thru. Line-caught poke, organic açaí, cold-press juice, protein shakes that actually contain protein. Served from a white-brick window faster than you can find your wallet.",
-      art: 'desert-cinematic',
-      wordmark: 'assets/logos/wordmark-teal.png',
-      badge: 'assets/logos/oval-badge-dark.png',
-    },
-    c: {
-      eyebrow: 'The Healthy Drive-Thru',
-      h: 'Roll<br>through.<br><span class="accent">Eat clean.</span><br><span class="teal">Repeat.</span>',
-      tag: '— made fresh, made fast —',
-      pitch: "A drive-thru window in downtown Phoenix that hands you organic açaí, line-caught poke, cold-press juice, and protein shakes that actually contain protein. From a white-brick building. With a sun on the wall.",
-      art: 'storefront',
-      wordmark: 'assets/logos/wordmark-navy.png',
-      badge: 'assets/logos/oval-badge-light.png',
-    },
-    /* ─── Mobile-first variants ─── */
-    d: {
-      eyebrow: 'Mobile-first · Aryze #001 · EST 2026',
-      h: 'Eat well.<br><em>One-thumb</em><br>fast<span class="accent">.</span>',
-      tag: '— made for the way you actually order —',
-      pitch: "Big buttons, full-bleed rows, everything in thumb reach. Designed for the moment you're already at the drive-thru window and just need one tap to commit.",
-      art: 'desert-photo',
-      wordmark: 'assets/logos/wordmark-navy.png',
-      badge: 'assets/logos/oval-badge-light.png',
-    },
-    e: {
-      eyebrow: 'Mobile-first · Stories layout · EST 2026',
-      h: 'Swipe the<br><span class="accent">menu.</span><br><span class="stroke">Tap the bowl.</span>',
-      tag: '— horizontal scroll, vertical hunger —',
-      pitch: "Each section is a swipeable rail of cards. Drag through bowls, meals, beverages like Stories. One card at a time, full focus, zero scroll-and-search.",
-      art: 'desert-cinematic',
-      wordmark: 'assets/logos/wordmark-teal.png',
-      badge: 'assets/logos/oval-badge-dark.png',
-    },
-    f: {
-      eyebrow: 'Mobile-first · Paper-menu density · EST 2026',
-      h: 'Less scroll.<br><em>More food.</em>',
-      tag: '— for the regulars who already know what they want —',
-      pitch: "Compact list rows, tiny thumbs, every item visible in a glance. Built for the customer who's been here twelve times and just needs to confirm the price on the Cheat Day before tapping Add.",
-      art: 'desert-photo',
-      wordmark: 'assets/logos/wordmark-navy.png',
-      badge: 'assets/logos/oval-badge-light.png',
-    },
+    a: HERITAGE_HERO,  b: HERITAGE_HERO,
+    c: CINEMATIC_HERO, d: CINEMATIC_HERO,
+    e: POP_HERO,       f: POP_HERO,
   };
 
   /* ───── SVG illustrations (3 variants) ───── */
