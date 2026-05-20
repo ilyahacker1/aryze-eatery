@@ -105,6 +105,54 @@ body.theme-c{
   --font-display: 'Anton', sans-serif;
 }
 
+/* ─── THEME D · Thumb Stack (one-handed, big full-width cards) ─── */
+body.theme-d{
+  --bg: var(--paper);
+  --fg: var(--navy);
+  --fg-muted: rgba(13,36,56,0.65);
+  --fg-faint: rgba(13,36,56,0.42);
+  --accent: var(--rust);
+  --hi: var(--gold);
+  --teal-on: var(--teal-deep);
+  --surface: #fff;
+  --surface-2: var(--cream);
+  --line: rgba(13,36,56,0.10);
+  --line-strong: rgba(13,36,56,0.20);
+  --font-display: 'Inter', sans-serif;
+}
+
+/* ─── THEME E · Swipe Carousel (Stories-style horizontal snap) ─── */
+body.theme-e{
+  --bg: var(--navy-deep);
+  --fg: var(--cream);
+  --fg-muted: rgba(244,236,217,0.72);
+  --fg-faint: rgba(244,236,217,0.45);
+  --accent: var(--gold);
+  --hi: var(--teal);
+  --teal-on: var(--teal);
+  --surface: #112538;
+  --surface-2: #0d1c2e;
+  --line: rgba(244,236,217,0.10);
+  --line-strong: rgba(244,236,217,0.20);
+  --font-display: 'Archivo', sans-serif;
+}
+
+/* ─── THEME F · Dense List (paper menu, fastest scan) ─── */
+body.theme-f{
+  --bg: var(--paper-warm);
+  --fg: var(--navy);
+  --fg-muted: rgba(13,36,56,0.65);
+  --fg-faint: rgba(13,36,56,0.42);
+  --accent: var(--navy);
+  --hi: var(--rust);
+  --teal-on: var(--teal-deep);
+  --surface: var(--paper);
+  --surface-2: var(--cream);
+  --line: rgba(13,36,56,0.14);
+  --line-strong: rgba(13,36,56,0.28);
+  --font-display: 'Fraunces', Georgia, serif;
+}
+
 body{background:var(--bg);color:var(--fg);font-family:var(--font-body)}
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -351,6 +399,140 @@ body.theme-c .card-add{background:var(--rust);color:#fff;border-radius:0;clip-pa
   body.theme-c .menu-hero-card .card-price{font-size:38px}
   .menu-hero-card .card-add{font-size:11px;padding:11px 18px}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   D · THUMB STACK — one-handed reach, full-bleed rows, big buttons
+   ═══════════════════════════════════════════════════════════════════════ */
+body.theme-d .hero-h{font-family:'Inter',sans-serif;font-weight:900;font-size:42px;line-height:0.95;letter-spacing:-1.5px;text-transform:none}
+body.theme-d .hero-h em{font-style:italic;color:var(--rust);font-weight:800}
+body.theme-d .hero-h .accent{color:var(--rust)}
+@media (min-width:780px){body.theme-d .hero-h{font-size:72px}}
+body.theme-d .menu-block-title{font-family:'Inter',sans-serif;font-weight:900;text-transform:none;letter-spacing:-0.8px;font-size:30px}
+@media (min-width:780px){body.theme-d .menu-block-title{font-size:42px}}
+body.theme-d .menu-block-num{font-family:'Inter',sans-serif;font-style:normal;font-weight:900;color:var(--rust);font-size:12px;letter-spacing:3px;text-transform:uppercase;background:rgba(232,93,38,0.12);padding:5px 10px;border-radius:var(--r-full)}
+body.theme-d .card-name{font-family:'Inter',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.3px;text-transform:none}
+body.theme-d .card-price{font-family:'Inter',sans-serif;font-weight:900;color:var(--rust);font-size:20px}
+
+body.theme-d .menu-block-grid{grid-template-columns:1fr !important;gap:14px}
+body.theme-d .menu-block-side{display:contents !important}
+body.theme-d .menu-card,
+body.theme-d .menu-hero-card{flex-direction:row;align-items:stretch;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 24px -16px rgba(13,36,56,0.18)}
+body.theme-d .card-img{flex:0 0 130px;aspect-ratio:1/1;border-radius:0}
+@media (min-width:560px){body.theme-d .card-img{flex:0 0 170px}}
+body.theme-d .menu-hero-card .card-img{flex:0 0 160px}
+@media (min-width:560px){body.theme-d .menu-hero-card .card-img{flex:0 0 220px}}
+body.theme-d .menu-hero-card .card-img .icon{font-size:64px}
+body.theme-d .card-img .icon{font-size:48px}
+body.theme-d .card-body{padding:16px 16px 16px;gap:6px}
+body.theme-d .card-desc{font-size:12px;-webkit-line-clamp:3}
+body.theme-d .card-add{min-width:88px;padding:11px 16px;font-size:11px;background:var(--rust);color:#fff}
+body.theme-d .card-add svg{width:13px;height:13px}
+body.theme-d .card-foot{margin-top:10px}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   E · SWIPE CAROUSEL — Stories-style horizontal scroll-snap
+   ═══════════════════════════════════════════════════════════════════════ */
+body.theme-e .hero-h{font-family:'Archivo',sans-serif;font-weight:900;font-size:44px;line-height:0.9;letter-spacing:-1.5px;text-transform:uppercase}
+body.theme-e .hero-h .accent{color:var(--gold)}
+body.theme-e .hero-h .stroke{color:transparent;-webkit-text-stroke:1.5px var(--teal)}
+@media (min-width:780px){body.theme-e .hero-h{font-size:82px}}
+body.theme-e .menu-block-title{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);font-size:32px}
+@media (min-width:780px){body.theme-e .menu-block-title{font-size:44px}}
+body.theme-e .menu-block-num{font-family:'Archivo',sans-serif;font-style:normal;font-weight:900;color:var(--gold);letter-spacing:2px;font-size:13px}
+body.theme-e .menu-block-count{color:var(--gold);opacity:0.8}
+body.theme-e .menu-block-sub{color:rgba(244,236,217,0.65)}
+body.theme-e .menu-block-head{border-bottom-color:rgba(244,236,217,0.12)}
+body.theme-e .card-name{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;font-size:16px}
+body.theme-e .card-price{font-family:'Archivo',sans-serif;font-weight:900;color:var(--gold);font-size:22px}
+
+body.theme-e .menu-blocks{padding-left:0;padding-right:0}
+body.theme-e .menu-block-head{padding-left:18px;padding-right:18px;margin-bottom:0}
+body.theme-e .menu-block-grid{
+  grid-template-columns:none !important;
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:18px;
+  gap:14px;
+  padding:18px 18px 22px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+body.theme-e .menu-block-grid::-webkit-scrollbar{display:none}
+body.theme-e .menu-block-side{display:contents !important}
+body.theme-e .menu-card,
+body.theme-e .menu-hero-card{
+  flex:0 0 78vw;
+  max-width:340px;
+  scroll-snap-align:start;
+  border:1px solid rgba(244,236,217,0.1);
+  background:linear-gradient(180deg,#1a3a55 0%,#0a1c2e 100%);
+  border-radius:var(--r-lg);
+  box-shadow:0 24px 50px -20px rgba(0,0,0,0.6);
+}
+@media (min-width:780px){body.theme-e .menu-card,body.theme-e .menu-hero-card{flex:0 0 360px}}
+body.theme-e .menu-hero-card{flex:0 0 84vw;max-width:380px;background:linear-gradient(180deg,#2a5070 0%,#0a1c2e 100%);border-color:var(--gold)}
+body.theme-e .card-img{aspect-ratio:4/5}
+body.theme-e .card-img .icon{font-size:72px}
+body.theme-e .menu-hero-card .card-img .icon{font-size:96px}
+body.theme-e .card-body{padding:18px;color:var(--cream)}
+body.theme-e .card-desc{color:rgba(244,236,217,0.65);font-size:12px;-webkit-line-clamp:3}
+body.theme-e .card-add{background:var(--gold);color:var(--navy)}
+
+/* swipe hint badge per block */
+body.theme-e .menu-block::after{
+  content:'← swipe →';
+  display:block;
+  text-align:center;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:3px;
+  color:rgba(244,236,217,0.35);
+  margin-top:-6px;
+  text-transform:uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   F · DENSE LIST — paper-menu digitized, list rows + small thumbs
+   ═══════════════════════════════════════════════════════════════════════ */
+body.theme-f .hero-h{font-family:'Fraunces',serif;font-weight:400;font-size:42px;line-height:0.95;letter-spacing:-1.5px}
+body.theme-f .hero-h em{font-style:italic;color:var(--rust);font-weight:500}
+body.theme-f .hero-h .accent{color:var(--rust);font-style:italic}
+@media (min-width:780px){body.theme-f .hero-h{font-size:78px}}
+body.theme-f .menu-block-title{font-family:'Fraunces',serif;font-weight:400;color:var(--navy);font-size:34px;letter-spacing:-0.8px;font-style:italic}
+@media (min-width:780px){body.theme-f .menu-block-title{font-size:48px}}
+body.theme-f .menu-block-num{font-family:'Fraunces',serif;font-style:italic;color:var(--rust);font-weight:500;font-size:18px}
+body.theme-f .menu-block-sub{font-style:italic;color:var(--fg-muted);font-size:13px}
+body.theme-f .card-name{font-family:'Fraunces',serif;font-weight:600;font-size:17px;letter-spacing:-0.3px}
+body.theme-f .card-price{font-family:'Fraunces',serif;font-weight:500;color:var(--rust);font-size:19px}
+
+body.theme-f .menu-block-grid{grid-template-columns:1fr !important;gap:0;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--line);overflow:hidden}
+body.theme-f .menu-block-side{display:contents !important}
+body.theme-f .menu-card,
+body.theme-f .menu-hero-card{
+  flex-direction:row;
+  align-items:center;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  padding:14px 16px;
+  gap:14px;
+}
+body.theme-f .menu-card:last-of-type,
+body.theme-f .menu-hero-card:last-of-type{border-bottom:0}
+body.theme-f .menu-card:hover,
+body.theme-f .menu-hero-card:hover{transform:none;box-shadow:none;background:var(--surface-2)}
+body.theme-f .card-img{flex:0 0 56px;height:56px;width:56px;aspect-ratio:1/1;border-radius:var(--r-sm)}
+body.theme-f .card-img .icon{font-size:30px !important}
+body.theme-f .menu-hero-card .card-img{flex:0 0 64px;height:64px;width:64px}
+body.theme-f .menu-hero-card .card-img .icon{font-size:34px !important}
+body.theme-f .card-flag{top:-4px;left:-4px;font-size:8px;padding:2px 6px;letter-spacing:1px}
+body.theme-f .card-body{padding:0;flex:1;gap:2px;min-width:0}
+body.theme-f .card-desc{font-size:12px;-webkit-line-clamp:1;margin-bottom:0}
+body.theme-f .card-foot{margin-top:4px;gap:10px}
+body.theme-f .card-add{padding:7px 12px;font-size:10px;min-width:auto;background:var(--navy);color:var(--gold);border-radius:var(--r-full)}
 
 /* ═══════════════════════════════════════════════════════════════════════
    FLOATING CART BAR  (mobile)
@@ -838,6 +1020,6 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
   <div id="modal-content"><!-- filled dynamically --></div>
 </div>
 
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

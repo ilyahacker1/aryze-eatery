@@ -9,8 +9,8 @@
   /* ───── theme selection from URL ───── */
   const params = new URLSearchParams(window.location.search);
   const variant = (params.get('v') || 'a').toLowerCase();
-  const theme = ['a','b','c'].includes(variant) ? variant : 'a';
-  document.body.classList.remove('theme-a','theme-b','theme-c');
+  const theme = ['a','b','c','d','e','f'].includes(variant) ? variant : 'a';
+  document.body.classList.remove('theme-a','theme-b','theme-c','theme-d','theme-e','theme-f');
   document.body.classList.add('theme-' + theme);
 
   /* ───── hero copy + theme-specific brand assets per variant ───── */
@@ -39,6 +39,34 @@
       tag: '— made fresh, made fast —',
       pitch: "A drive-thru window in downtown Phoenix that hands you organic açaí, line-caught poke, cold-press juice, and protein shakes that actually contain protein. From a white-brick building. With a sun on the wall.",
       art: 'storefront',
+      wordmark: 'assets/logos/wordmark-navy.png',
+      badge: 'assets/logos/oval-badge-light.png',
+    },
+    /* ─── Mobile-first variants ─── */
+    d: {
+      eyebrow: 'Mobile-first · Aryze #001 · EST 2026',
+      h: 'Eat well.<br><em>One-thumb</em><br>fast<span class="accent">.</span>',
+      tag: '— made for the way you actually order —',
+      pitch: "Big buttons, full-bleed rows, everything in thumb reach. Designed for the moment you're already at the drive-thru window and just need one tap to commit.",
+      art: 'desert-photo',
+      wordmark: 'assets/logos/wordmark-navy.png',
+      badge: 'assets/logos/oval-badge-light.png',
+    },
+    e: {
+      eyebrow: 'Mobile-first · Stories layout · EST 2026',
+      h: 'Swipe the<br><span class="accent">menu.</span><br><span class="stroke">Tap the bowl.</span>',
+      tag: '— horizontal scroll, vertical hunger —',
+      pitch: "Each section is a swipeable rail of cards. Drag through bowls, meals, beverages like Stories. One card at a time, full focus, zero scroll-and-search.",
+      art: 'desert-cinematic',
+      wordmark: 'assets/logos/wordmark-teal.png',
+      badge: 'assets/logos/oval-badge-dark.png',
+    },
+    f: {
+      eyebrow: 'Mobile-first · Paper-menu density · EST 2026',
+      h: 'Less scroll.<br><em>More food.</em>',
+      tag: '— for the regulars who already know what they want —',
+      pitch: "Compact list rows, tiny thumbs, every item visible in a glance. Built for the customer who's been here twelve times and just needs to confirm the price on the Cheat Day before tapping Add.",
+      art: 'desert-photo',
       wordmark: 'assets/logos/wordmark-navy.png',
       badge: 'assets/logos/oval-badge-light.png',
     },

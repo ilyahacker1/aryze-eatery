@@ -47,16 +47,19 @@ iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
 <header>
   <div class="brand">Aryze<small>A/B/C concept compare</small></div>
   <div class="tabs" role="tablist">
-    <button class="tab active" data-v="a" role="tab">A · Heritage<span class="lbl">Sweetgreen-style</span></button>
-    <button class="tab" data-v="b" role="tab">B · Cinematic<span class="lbl">Erewhon-style</span></button>
-    <button class="tab" data-v="c" role="tab">C · Pop Chain<span class="lbl">JJTJ-style</span></button>
+    <button class="tab active" data-v="a" role="tab">A · Heritage<span class="lbl">desktop · Sweetgreen</span></button>
+    <button class="tab" data-v="b" role="tab">B · Cinematic<span class="lbl">desktop · Erewhon</span></button>
+    <button class="tab" data-v="c" role="tab">C · Pop Chain<span class="lbl">desktop · JJTJ</span></button>
+    <button class="tab" data-v="d" role="tab">D · Thumb Stack<span class="lbl">mobile · one-handed</span></button>
+    <button class="tab" data-v="e" role="tab">E · Swipe Stories<span class="lbl">mobile · carousel</span></button>
+    <button class="tab" data-v="f" role="tab">F · Dense List<span class="lbl">mobile · paper menu</span></button>
   </div>
   <button class="share" id="share-btn">Copy link</button>
 </header>
 
 <div class="viewport"><iframe id="frame" src="/aryze/app.html?v=a" title="Aryze concept" loading="eager"></iframe></div>
 
-<div class="helper">Switch concepts <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> · scroll each to compare</div>
+<div class="helper">Switch · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> desktop &nbsp; <kbd>4</kbd><kbd>5</kbd><kbd>6</kbd> mobile</div>
 
 <script>
 (function(){
@@ -64,8 +67,11 @@ iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
   const tabs = document.querySelectorAll('.tab');
   const share = document.getElementById('share-btn');
 
+  const VALID = ['a','b','c','d','e','f'];
+  const KEYS = { '1':'a', '2':'b', '3':'c', '4':'d', '5':'e', '6':'f' };
+
   function go(v, el) {
-    if (!['a','b','c'].includes(v)) v = 'a';
+    if (!VALID.includes(v)) v = 'a';
     frame.src = '/aryze/app.html?v=' + v;
     tabs.forEach(t => t.classList.toggle('active', t.dataset.v === v));
     history.replaceState(null, '', '?v=' + v);
@@ -74,14 +80,12 @@ iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
   tabs.forEach(t => t.addEventListener('click', () => go(t.dataset.v, t)));
 
   window.addEventListener('keydown', e => {
-    if (e.key === '1') go('a');
-    else if (e.key === '2') go('b');
-    else if (e.key === '3') go('c');
+    if (KEYS[e.key]) go(KEYS[e.key]);
   });
 
   // sync from URL on load
   const initial = new URLSearchParams(location.search).get('v');
-  if (initial && ['a','b','c'].includes(initial)) go(initial);
+  if (initial && VALID.includes(initial)) go(initial);
 
   share.addEventListener('click', async () => {
     const url = location.href;
