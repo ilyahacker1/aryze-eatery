@@ -54,7 +54,7 @@ iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
   <button class="share" id="share-btn">Copy link</button>
 </header>
 
-<div class="viewport"><iframe id="frame" src="app.html?v=a" title="Aryze concept" loading="eager"></iframe></div>
+<div class="viewport"><iframe id="frame" src="/aryze/app.html?v=a" title="Aryze concept" loading="eager"></iframe></div>
 
 <div class="helper">Switch concepts <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> · scroll each to compare</div>
 
@@ -66,7 +66,7 @@ iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
 
   function go(v, el) {
     if (!['a','b','c'].includes(v)) v = 'a';
-    frame.src = 'app.html?v=' + v;
+    frame.src = '/aryze/app.html?v=' + v;
     tabs.forEach(t => t.classList.toggle('active', t.dataset.v === v));
     history.replaceState(null, '', '?v=' + v);
   }
