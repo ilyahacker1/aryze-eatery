@@ -900,6 +900,114 @@ body.mode-mobile .menu-blocks{gap:36px}
   body.mode-web.theme-c .hero-h{font-size:108px}
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   ITERATION 4 — controlled-chaos type scale, normalized square cards,
+   50/50 hero + 2×2 grid on desktop, hide ordinal badges in mobile
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Controlled-chaos clamped type scale (tuned for half-column heroes) ── */
+:root{
+  --type-massive:  clamp(48px,  8vw, 120px);
+  --type-display:  clamp(36px,  7vw,  96px);
+  --type-headline: clamp(28px,  5vw,  64px);
+}
+
+/* ── Hero H1 — bigger, fluid, tighter ── */
+.hero-h{letter-spacing:-0.025em !important;line-height:0.88 !important}
+body.mode-web .hero-h{font-size:var(--type-massive) !important}
+body.mode-web.theme-c .hero-h{font-size:var(--type-massive) !important;letter-spacing:-0.01em !important}
+body.mode-mobile .hero-h{font-size:clamp(38px, 11vw, 56px) !important;letter-spacing:-0.025em !important;line-height:0.92 !important}
+
+/* ── Section titles — bigger again, fluid clamp ── */
+.menu-block-title{font-size:var(--type-display) !important;letter-spacing:-0.04em !important;line-height:0.88 !important}
+body.theme-c .menu-block-title{font-size:var(--type-display) !important;letter-spacing:-0.01em !important}
+body.mode-mobile .menu-block-title{font-size:clamp(40px, 11vw, 56px) !important}
+.menu-head h2{font-size:var(--type-display) !important;letter-spacing:-0.04em !important;line-height:0.88 !important}
+body.theme-c .menu-head h2{font-size:var(--type-display) !important;letter-spacing:0 !important}
+body.mode-mobile .menu-head h2{font-size:clamp(42px, 12vw, 60px) !important}
+
+/* ── Remove the ordinal "001" badge on mobile (visual clutter at small size) ── */
+body.mode-mobile .hero-eyebrow .badge{display:none !important}
+body.mode-mobile .menu-block-num{
+  font-size:11px !important;
+  letter-spacing:2.5px !important;
+  opacity:0.55;
+  background:none !important;
+  padding:0 !important;
+}
+body.theme-c.mode-mobile .menu-block-num{font-size:13px !important}
+
+/* ── Normalized square cards (mobile) — same shape, more graphic pop ── */
+body.mode-mobile .menu-card,
+body.mode-mobile .menu-hero-card{
+  aspect-ratio:1/1 !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+body.mode-mobile .card-img{flex:1 1 auto !important;aspect-ratio:auto !important;min-height:0}
+body.mode-mobile .card-img .icon{font-size:54px !important}
+body.mode-mobile .card-body{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.78) 30%, rgba(0,0,0,0.35) 70%, transparent 100%);
+  color:#fff;
+  padding:36px 12px 12px !important;
+  gap:4px !important;
+  flex:0 0 auto !important;
+}
+body.mode-mobile .card-name{color:#fff !important;font-size:13px !important;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
+body.mode-mobile .card-desc{display:none !important}
+body.mode-mobile .card-foot{margin-top:6px !important}
+body.mode-mobile .card-price{color:#fff !important;font-size:16px !important;text-shadow:0 1px 2px rgba(0,0,0,0.4)}
+body.mode-mobile .card-add{padding:5px 9px !important;font-size:9px !important;min-width:auto !important}
+body.mode-mobile.theme-c .card-name,
+body.mode-mobile.theme-c .card-price{color:#fff !important}
+
+/* ── Desktop: 50/50 hero + 2×2 side grid (web mode) ── */
+@media (min-width:780px){
+  body.mode-web .menu-block-grid{
+    grid-template-columns:1fr 1fr !important;
+    grid-template-rows:auto !important;
+    gap:18px !important;
+    align-items:stretch;
+  }
+  body.mode-web .menu-block-side{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:14px !important;
+    align-content:start;
+  }
+  /* hero fills left half, stretches to side-grid height (no forced 1:1
+     because the side grid may be 2x3 = taller than wide, and forcing
+     aspect-ratio would push the hero past its column) */
+  body.mode-web .menu-hero-card{
+    grid-column:1 !important;
+    grid-row:1 !important;
+    aspect-ratio:auto !important;
+    align-self:stretch;
+    min-height:500px;
+  }
+  body.mode-web .menu-hero-card .card-img{aspect-ratio:auto;flex:1;min-height:300px}
+  body.mode-web .menu-hero-card .card-img .icon{font-size:clamp(96px, 10vw, 180px)}
+  /* side container is 2-col, max 2 rows visible → 4 cards in clean 2x2;
+     overflow items wrap into row 3+ which is fine */
+  body.mode-web .menu-block-side{
+    grid-auto-rows:1fr;
+  }
+  /* side cards are square, equal-size — Dunkin-style tile grid */
+  body.mode-web .menu-card{
+    aspect-ratio:1/1;
+    flex-direction:column;
+  }
+  body.mode-web .menu-card .card-img{flex:1;aspect-ratio:auto}
+  body.mode-web .menu-card .card-img .icon{font-size:64px}
+  body.mode-web .menu-card .card-body{padding:14px 14px 16px}
+  body.mode-web .menu-card .card-desc{-webkit-line-clamp:2;font-size:11.5px}
+}
+
+/* ── Phone-frame nav — hide secondary action labels on tight width ── */
+body.mode-mobile .nav-cart-btn{padding:8px 12px !important;font-size:10px !important}
+body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
+
 </style>
 </head>
 <body class="theme-a mode-web">
@@ -1163,6 +1271,6 @@ body.mode-mobile .menu-blocks{gap:36px}
   <div id="modal-content"><!-- filled dynamically --></div>
 </div>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
