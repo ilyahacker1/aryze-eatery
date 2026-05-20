@@ -359,7 +359,6 @@
      ═══════════════════════════════════════════════════════════════════════ */
   const state = {
     cart: [],      // [{ lineId, id, name, price, qty, size, option, boosts: [], icon, c }]
-    activeTab: 'bowls',
   };
 
   function flatMenu() { return [...MENU.bowls, ...MENU.meals, ...MENU.beverages]; }
@@ -406,18 +405,33 @@
     art.appendChild(badge);
   }
 
-  /* ───── menu render ───── */
-  function renderMenu() {
-    const grid = document.getElementById('menu-grid');
-    const items = MENU[state.activeTab];
-    grid.innerHTML = items.map(item => `
-      <article class="menu-card" style="--c1:${item.c[0]};--c2:${item.c[1]}">
+  /* ───── menu sections metadata: 3 stacked, each with a flagship hero ───── */
+  const MENU_SECTIONS = [
+    {
+      key:'bowls', num:'01', title:'Bowls', flagshipId:'og-bowl',
+      sub:'Organic Pará açaí + line-caught poke. Add a peanut-butter or almond-butter boost to any bowl for +$1.',
+    },
+    {
+      key:'meals', num:'02', title:'Meals', flagshipId:'nutty-toast',
+      sub:'Breakfast burritos, elevated sourdough toast, and slow-simmered bone broth. Real eggs, real cheese, no shortcuts.',
+    },
+    {
+      key:'beverages', num:'03', title:'Beverages', flagshipId:'hella-green',
+      sub:'Whole-fruit smoothies, 25g-protein shakes, cold-press juice, ceremonial matcha, drip coffee from a local roaster.',
+    },
+  ];
+
+  function cardHTML(item, isHero) {
+    const flagText = isHero ? (item.flag || 'House pick') : item.flag;
+    const flagCls  = isHero ? 'feature' : (item.flagType || '');
+    return `
+      <article class="${isHero ? 'menu-hero-card' : 'menu-card'}" style="--c1:${item.c[0]};--c2:${item.c[1]}">
         <div class="card-img">
-          ${item.flag ? `<span class="card-flag ${item.flagType||''}">${item.flag}</span>` : ''}
+          ${flagText ? `<span class="card-flag ${flagCls}">${flagText}</span>` : ''}
           <span class="icon" aria-hidden="true">${item.icon}</span>
         </div>
         <div class="card-body">
-          <h3 class="card-name">${item.name}</h3>
+          <h4 class="card-name">${item.name}</h4>
           <p class="card-desc">${item.desc}</p>
           <div class="card-foot">
             <span class="card-price">${fmt(item.price)}${item.sizes ? '<small> · 16oz</small>' : ''}</span>
@@ -428,17 +442,43 @@
           </div>
         </div>
       </article>
-    `).join('');
+    `;
   }
 
-  /* ───── tabs ───── */
-  function bindTabs() {
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+  /* ───── menu render: 3 stacked sections ───── */
+  function renderMenu() {
+    const root = document.getElementById('menu-blocks');
+    root.innerHTML = MENU_SECTIONS.map(s => {
+      const items = MENU[s.key];
+      const hero  = items.find(i => i.id === s.flagshipId) || items[0];
+      const rest  = items.filter(i => i.id !== hero.id);
+      return `
+        <section class="menu-block" id="menu-${s.key}">
+          <header class="menu-block-head">
+            <span class="menu-block-num">${s.num}</span>
+            <h3 class="menu-block-title">${s.title}</h3>
+            <span class="menu-block-count">${items.length} items</span>
+            <p class="menu-block-sub">${s.sub}</p>
+          </header>
+          <div class="menu-block-grid">
+            ${cardHTML(hero, true)}
+            <div class="menu-block-side">
+              ${rest.map(item => cardHTML(item, false)).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    }).join('');
+  }
+
+  /* ───── section anchors (click pill = smooth scroll to that block) ───── */
+  function bindAnchors() {
+    document.querySelectorAll('.anchor-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        state.activeTab = btn.dataset.tab;
-        renderMenu();
+        const el = document.getElementById('menu-' + btn.dataset.anchor);
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top, behavior: 'smooth' });
       });
     });
   }
@@ -877,7 +917,7 @@
 
   /* ───── init ───── */
   renderHero();
-  bindTabs();
+  bindAnchors();
   renderMenu();
   renderInsta();
   renderReviews();
