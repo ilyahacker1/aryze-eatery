@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aryze Eatery — Concept Comparison A / B / C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#fff;overflow:hidden}
+header{position:fixed;top:0;left:0;right:0;height:64px;background:#0a0a0a;border-bottom:1px solid #1f1f1f;display:flex;align-items:center;padding:0 24px;z-index:50;gap:20px}
+.brand{font-size:13px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#f5c32c;display:flex;align-items:center;gap:8px}
+.brand::before{content:'';display:inline-block;width:14px;height:14px;background:radial-gradient(circle,#f5c32c 30%,transparent 31%);border:2px solid #f5c32c;border-radius:50%}
+.brand small{color:#5a5a5a;font-weight:500;letter-spacing:2px;font-size:11px;margin-left:6px}
+.tabs{display:flex;gap:6px;margin-left:auto}
+.tab{padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#161616;color:#888;border:1px solid #1f1f1f;cursor:pointer;transition:all .15s;font-family:inherit}
+.tab:hover{color:#fff;border-color:#3a3a3a}
+.tab.active{background:#f5c32c;color:#0a0a0a;border-color:#f5c32c}
+.tab .label{display:block;font-size:10px;font-weight:600;letter-spacing:1px;color:rgba(0,0,0,0.5);margin-top:2px}
+.tab:not(.active) .label{color:#5a5a5a}
+.viewport{position:fixed;top:64px;left:0;right:0;bottom:0;background:#000}
+iframe{width:100%;height:100%;border:0;background:#fff;display:block}
+.legend{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(10,10,10,0.92);border:1px solid #1f1f1f;backdrop-filter:blur(10px);padding:10px 18px;border-radius:999px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#888;z-index:40;display:flex;align-items:center;gap:14px}
+.legend strong{color:#f5c32c;font-weight:800}
+.legend kbd{background:#161616;border:1px solid #2a2a2a;padding:2px 8px;border-radius:4px;font-family:inherit;font-size:10px;color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">ARYZE EATERY <small>CONCEPT COMPARE</small></div>
+  <div class="tabs">
+    <button class="tab active" data-src="a.html">A · Heritage<span class="label">Sweetgreen-style editorial</span></button>
+    <button class="tab" data-src="b.html">B · Cinematic<span class="label">Erewhon-style premium</span></button>
+    <button class="tab" data-src="c.html">C · Pop Chain<span class="label">Joe & The Juice kinetic</span></button>
+  </div>
+</header>
+<div class="viewport"><iframe id="frame" src="a.html" title="concept"></iframe></div>
+<div class="legend">Switch concepts up top <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> · scroll each to see full design</div>
+
+<script>
+const frame = document.getElementById('frame');
+const tabs = document.querySelectorAll('.tab');
+function go(src, el){
+  frame.src = src;
+  tabs.forEach(t=>t.classList.toggle('active', t===el));
+}
+tabs.forEach(t=>t.addEventListener('click',()=>go(t.dataset.src,t)));
+window.addEventListener('keydown',e=>{
+  if(e.key==='1') go('a.html',tabs[0]);
+  if(e.key==='2') go('b.html',tabs[1]);
+  if(e.key==='3') go('c.html',tabs[2]);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aryze Eatery — Phoenix · Healthy Drive-Thru, Made for the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d2438;--navy-deep:#081827;
+  --cream:#f4ecd9;--cream-deep:#ebe0c5;
+  --gold:#f5c32c;--gold-deep:#d9a514;
+  --teal:#2bb6a8;--teal-deep:#1e8a7f;
+  --rust:#d96a32;
+  --ink:#0a1a26;
+  --paper:#fbf6e9;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+.serif{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto}
+.hand{font-family:'Caveat',cursive}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ────────────────────────── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:1px solid rgba(13,36,56,0.1);background:var(--paper);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:30px;height:30px;position:relative;flex-shrink:0}
+.logo-text{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-0.5px;color:var(--navy);font-style:italic}
+.logo-sub{font-size:9px;font-weight:700;letter-spacing:3px;color:var(--teal);display:block;margin-top:-2px;font-family:'Inter',sans-serif;font-style:normal}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;letter-spacing:0.3px;color:var(--navy);opacity:0.65;transition:opacity .15s}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--navy);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:1.5px;padding:12px 22px;border-radius:999px;text-transform:uppercase}
+.nav-cta:hover{background:var(--navy-deep)}
+
+/* ── HERO ───────────────────────── */
+.hero{padding:80px 56px 80px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center;position:relative}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.hero-eyebrow .dot{width:8px;height:8px;background:var(--teal);border-radius:50%}
+.hero-eyebrow span{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--navy);opacity:0.55}
+h1.hed{font-family:'Fraunces',serif;font-weight:400;font-size:96px;line-height:0.95;letter-spacing:-3px;color:var(--navy);margin-bottom:28px}
+h1.hed em{font-style:italic;color:var(--teal);font-weight:500}
+.hed-period{color:var(--gold)}
+.hero-body{font-size:18px;line-height:1.65;color:var(--ink);opacity:0.75;max-width:480px;margin-bottom:36px;font-weight:400}
+.hero-ctas{display:flex;gap:14px;align-items:center}
+.btn-primary{background:var(--navy);color:var(--paper);padding:18px 30px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:transform .15s}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-primary svg{width:14px;height:14px}
+.btn-link{font-size:13px;font-weight:600;letter-spacing:0.5px;color:var(--navy);border-bottom:1.5px solid var(--navy);padding-bottom:2px}
+
+.hero-art{position:relative;aspect-ratio:1/1.15;display:flex;align-items:center;justify-content:center}
+.hero-bowl{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,#5a1d2d 0%,#3a0e1f 60%,#1e0612 100%);border-radius:50%;box-shadow:0 60px 100px -30px rgba(13,36,56,0.4),inset 0 -30px 60px rgba(0,0,0,0.4)}
+.hero-bowl::before{content:'';position:absolute;top:10%;left:15%;right:15%;height:20%;background:radial-gradient(ellipse,rgba(255,200,210,0.35),transparent 60%);filter:blur(20px);border-radius:50%}
+.hero-fruit{position:absolute;border-radius:50%;box-shadow:inset -4px -4px 8px rgba(0,0,0,0.3)}
+.hero-fruit.s1{width:14%;height:14%;top:18%;left:32%;background:radial-gradient(circle at 35% 30%,#ff6b8a 0%,#c8264a 70%);transform:rotate(20deg)}
+.hero-fruit.s2{width:11%;height:11%;top:28%;left:54%;background:radial-gradient(circle at 35% 30%,#ff7d9a 0%,#b41e3f 70%)}
+.hero-fruit.s3{width:9%;height:9%;top:46%;left:62%;background:radial-gradient(circle at 35% 30%,#ff8aa3 0%,#b8264a 70%)}
+.hero-fruit.s4{width:13%;height:13%;top:38%;left:23%;background:radial-gradient(circle at 35% 30%,#ff7995 0%,#a8123a 70%)}
+.hero-fruit.b1{width:7%;height:7%;top:24%;left:48%;background:radial-gradient(circle at 35% 30%,#5277b5 0%,#1f3970 70%)}
+.hero-fruit.b2{width:6%;height:6%;top:34%;left:30%;background:radial-gradient(circle at 35% 30%,#4a6fae 0%,#1a3268 70%)}
+.hero-fruit.g1{width:16%;height:5%;top:50%;left:36%;background:linear-gradient(to right,#d4b896,#a8855a);border-radius:30%;transform:rotate(-5deg)}
+.hero-fruit.g2{width:14%;height:4%;top:55%;left:42%;background:linear-gradient(to right,#c9ad8a,#9c7a50);border-radius:30%;transform:rotate(8deg)}
+.hero-bowl-rim{position:absolute;inset:-2%;border-radius:50%;border:2px solid rgba(13,36,56,0.08)}
+
+.hero-tag{position:absolute;bottom:-20px;right:-10px;background:var(--cream);color:var(--navy);padding:18px 24px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;box-shadow:0 20px 50px -20px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px}
+.hero-tag .pulse{width:8px;height:8px;background:var(--teal);border-radius:50%;animation:p 2s infinite}
+@keyframes p{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.5}}
+
+.hero-meta{position:absolute;top:48px;right:56px;text-align:right;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);opacity:0.45;font-weight:600;line-height:1.8}
+.hero-meta strong{color:var(--teal);opacity:1;font-weight:800}
+
+/* ── ESTABLISHED MARQUEE ────────── */
+.est-marquee{background:var(--navy);color:var(--paper);padding:22px 0;overflow:hidden;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04)}
+.marq-inner{display:flex;white-space:nowrap;animation:m 40s linear infinite;gap:48px;padding-left:48px}
+@keyframes m{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq-item{display:inline-flex;align-items:center;gap:24px;font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:34px;letter-spacing:-0.5px;color:var(--cream)}
+.marq-item .dot{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.marq-item em{font-style:normal;color:var(--gold);font-weight:500}
+
+/* ── STORY ──────────────────────── */
+.story{padding:140px 56px 140px;background:var(--paper);display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:start;position:relative}
+.story-label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--rust);margin-bottom:24px}
+.story-hed{font-family:'Fraunces',serif;font-weight:400;font-size:62px;line-height:0.98;letter-spacing:-1.5px;color:var(--navy);margin-bottom:0;position:sticky;top:120px}
+.story-hed em{font-style:italic;color:var(--teal)}
+.story-body{font-size:17px;line-height:1.75;color:var(--ink);opacity:0.78;font-weight:400}
+.story-body p{margin-bottom:22px}
+.story-body .lead{font-family:'Fraunces',serif;font-size:24px;font-weight:400;font-style:italic;color:var(--navy);opacity:1;line-height:1.45;margin-bottom:32px;letter-spacing:-0.3px}
+.story-sig{margin-top:40px;display:flex;align-items:center;gap:18px;padding-top:28px;border-top:1px solid rgba(13,36,56,0.1)}
+.sig-mark{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--rust) 100%);display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:'Fraunces',serif;font-weight:700;font-size:20px;font-style:italic}
+.sig-name{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--navy);font-style:italic;margin-bottom:2px}
+.sig-role{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);opacity:0.5}
+
+/* ── SOURCING ──────────────────── */
+.sourcing{background:var(--navy);color:var(--cream);padding:120px 56px}
+.src-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.src-label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.src-hed{font-family:'Fraunces',serif;font-weight:400;font-size:78px;line-height:0.95;letter-spacing:-2.5px;color:var(--cream)}
+.src-hed em{font-style:italic;color:var(--teal)}
+.src-intro{font-size:17px;line-height:1.7;opacity:0.7;max-width:460px}
+.src-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:60px}
+.src-item{border-top:1px solid rgba(255,255,255,0.15);padding-top:24px}
+.src-num{font-family:'Fraunces',serif;font-weight:300;font-size:54px;line-height:1;color:var(--gold);margin-bottom:18px;letter-spacing:-2px}
+.src-num small{font-size:18px;color:var(--gold);opacity:0.6;font-weight:400;letter-spacing:0}
+.src-name{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);margin-bottom:6px}
+.src-desc{font-size:14px;line-height:1.6;color:var(--cream);opacity:0.6}
+
+/* ── MENU ───────────────────────── */
+.menu{background:var(--paper);padding:140px 56px}
+.menu-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px;padding-bottom:32px;border-bottom:1px solid rgba(13,36,56,0.12);gap:48px;flex-wrap:wrap}
+.menu-intro-text .label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--rust);margin-bottom:18px}
+.menu-intro-text h2{font-family:'Fraunces',serif;font-weight:400;font-size:82px;line-height:0.95;letter-spacing:-2.5px;color:var(--navy)}
+.menu-intro-text h2 em{font-style:italic;color:var(--teal)}
+.menu-intro-aside{text-align:right;font-size:13px;line-height:1.7;color:var(--ink);opacity:0.55;max-width:280px}
+.menu-intro-aside strong{color:var(--navy);opacity:1;display:block;margin-bottom:4px}
+
+.menu-cat{display:grid;grid-template-columns:240px 1fr;gap:80px;padding:48px 0;border-bottom:1px solid rgba(13,36,56,0.12);align-items:start}
+.cat-title{position:sticky;top:120px}
+.cat-title .num{font-family:'Fraunces',serif;font-weight:300;font-size:17px;color:var(--rust);font-style:italic;letter-spacing:-0.3px;margin-bottom:14px;display:block}
+.cat-title h3{font-family:'Fraunces',serif;font-weight:400;font-size:48px;line-height:0.95;letter-spacing:-1.5px;color:var(--navy);margin-bottom:14px}
+.cat-title h3 em{font-style:italic;color:var(--teal)}
+.cat-title .note{font-size:12px;line-height:1.65;color:var(--ink);opacity:0.55;font-weight:500;letter-spacing:0.2px}
+.cat-items{display:flex;flex-direction:column;gap:28px}
+.item{display:grid;grid-template-columns:1fr auto;gap:32px;padding-bottom:24px;border-bottom:1px dashed rgba(13,36,56,0.12)}
+.item:last-child{border-bottom:0}
+.item-head{font-family:'Fraunces',serif;font-weight:500;font-size:28px;letter-spacing:-0.5px;color:var(--navy);margin-bottom:6px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.item-fav{background:var(--gold);color:var(--navy);font-family:'Inter',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 9px;border-radius:3px;vertical-align:middle}
+.item-protein{font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);padding:3px 8px;border-radius:3px}
+.item-desc{font-size:14px;line-height:1.65;color:var(--ink);opacity:0.65;font-weight:400;max-width:520px}
+.item-price{font-family:'Fraunces',serif;font-weight:400;font-size:28px;color:var(--navy);text-align:right;letter-spacing:-0.5px;white-space:nowrap}
+.item-price small{font-size:12px;color:var(--ink);opacity:0.5;font-weight:500;letter-spacing:0.5px}
+
+/* ── PRESS / TRUST ─────────────── */
+.press{padding:80px 56px;background:var(--cream-deep);text-align:center;border-top:1px solid rgba(13,36,56,0.05)}
+.press-label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--navy);opacity:0.5;margin-bottom:34px}
+.press-quote{font-family:'Fraunces',serif;font-weight:400;font-size:42px;line-height:1.25;letter-spacing:-1px;color:var(--navy);max-width:880px;margin:0 auto 28px;font-style:italic}
+.press-source{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--rust)}
+
+/* ── LOCATION ───────────────────── */
+.location{background:var(--paper);padding:140px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.loc-label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--rust);margin-bottom:24px}
+.loc-hed{font-family:'Fraunces',serif;font-weight:400;font-size:74px;line-height:0.95;letter-spacing:-2px;color:var(--navy);margin-bottom:28px}
+.loc-hed em{font-style:italic;color:var(--teal)}
+.loc-addr{font-family:'Fraunces',serif;font-size:24px;font-weight:400;color:var(--navy);margin-bottom:8px;font-style:italic;letter-spacing:-0.3px}
+.loc-cross{font-size:13px;color:var(--ink);opacity:0.55;margin-bottom:34px;letter-spacing:0.3px}
+.loc-hours{margin-bottom:34px}
+.hr{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(13,36,56,0.08);font-size:14px}
+.hr-day{font-weight:700;color:var(--navy);letter-spacing:0.3px}
+.hr-time{font-family:'Fraunces',serif;font-size:16px;color:var(--navy);opacity:0.8;font-style:italic}
+.loc-actions{display:flex;gap:14px}
+
+.loc-card{aspect-ratio:1/1.05;background:var(--navy);border-radius:24px;padding:48px;color:var(--cream);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 40px 80px -30px rgba(13,36,56,0.35)}
+.loc-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(245,195,44,0.18) 0%,transparent 50%)}
+.loc-card-top{position:relative;z-index:1}
+.loc-card-label{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.loc-card h3{font-family:'Fraunces',serif;font-weight:400;font-size:56px;line-height:0.95;letter-spacing:-1.5px;color:var(--cream);margin-bottom:14px}
+.loc-card h3 em{font-style:italic;color:var(--teal)}
+.loc-card-body{font-size:15px;line-height:1.65;opacity:0.7;max-width:380px}
+.loc-card-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.loc-card-stat .v{font-family:'Fraunces',serif;font-weight:300;font-size:54px;color:var(--gold);line-height:1;letter-spacing:-2px}
+.loc-card-stat .l{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:0.6;margin-top:6px}
+
+/* ── DESERT ILLUSTRATION ──────── */
+.desert{background:var(--navy);padding:0;position:relative;overflow:hidden}
+.desert svg{width:100%;height:auto;display:block}
+
+/* ── FOOTER ─────────────────────── */
+footer{background:var(--navy-deep);color:var(--cream);padding:80px 56px 36px}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:64px}
+.foot-brand{font-family:'Fraunces',serif;font-weight:400;font-size:48px;color:var(--gold);font-style:italic;letter-spacing:-1.5px;line-height:0.9;margin-bottom:14px}
+.foot-tag{font-size:12px;line-height:1.7;opacity:0.55;max-width:280px}
+.foot-col h4{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.foot-col a{display:block;font-size:14px;color:var(--cream);opacity:0.6;margin-bottom:10px;transition:opacity .15s}
+.foot-col a:hover{opacity:1}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:0.4;flex-wrap:wrap;gap:12px}
+
+/* ── RESPONSIVE ────────────────── */
+@media(max-width:900px){
+  nav{padding:18px 24px}
+  .nav-links{display:none}
+  .hero{padding:48px 24px 60px;grid-template-columns:1fr;gap:48px}
+  h1.hed{font-size:56px;letter-spacing:-2px}
+  .hero-meta{position:relative;top:0;right:0;text-align:left;margin-bottom:24px}
+  .marq-item{font-size:24px}
+  .story{padding:80px 24px;grid-template-columns:1fr;gap:48px}
+  .story-hed{position:static;font-size:44px}
+  .sourcing{padding:80px 24px}
+  .src-top{grid-template-columns:1fr;gap:32px}
+  .src-hed{font-size:52px}
+  .src-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .menu{padding:80px 24px}
+  .menu-intro-text h2{font-size:54px}
+  .menu-cat{grid-template-columns:1fr;gap:32px}
+  .cat-title{position:static}
+  .cat-title h3{font-size:36px}
+  .press{padding:60px 24px}
+  .press-quote{font-size:28px}
+  .location{padding:80px 24px;grid-template-columns:1fr;gap:48px}
+  .loc-hed{font-size:52px}
+  .loc-card{padding:32px;aspect-ratio:auto}
+  .loc-card h3{font-size:40px}
+  footer{padding:60px 24px 24px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <svg class="logo-mark" viewBox="0 0 60 60" fill="none">
+      <circle cx="30" cy="30" r="9" fill="#f5c32c"/>
+      <g stroke="#f5c32c" stroke-width="2.5" stroke-linecap="round">
+        <line x1="30" y1="6" x2="30" y2="14"/>
+        <line x1="30" y1="46" x2="30" y2="54"/>
+        <line x1="6" y1="30" x2="14" y2="30"/>
+        <line x1="46" y1="30" x2="54" y2="30"/>
+        <line x1="13" y1="13" x2="18" y2="18"/>
+        <line x1="42" y1="42" x2="47" y2="47"/>
+        <line x1="47" y1="13" x2="42" y2="18"/>
+        <line x1="18" y1="42" x2="13" y2="47"/>
+      </g>
+    </svg>
+    <div>
+      <div class="logo-text">Aryze<span class="logo-sub">PHOENIX · EST. 2026</span></div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#story">Our story</a>
+    <a href="#menu">Menu</a>
+    <a href="#sourcing">Sourcing</a>
+    <a href="#location">Visit</a>
+    <a href="#" class="nav-cta">Order ahead</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-meta">
+    Phoenix, Arizona<br>
+    <strong>Open · 7AM – 7PM</strong><br>
+    Drive-thru + Grab & Go
+  </div>
+  <div>
+    <div class="hero-eyebrow"><span class="dot"></span><span>Healthy Drive-Thru · Phoenix, AZ · EST. 2026</span></div>
+    <h1 class="hed">A healthy<br>drive-thru,<br><em>made for the</em><br>desert<span class="hed-period">.</span></h1>
+    <p class="hero-body">Phoenix has run on gas station food and good intentions for too long. Aryze is the in-and-out window we wished existed — organic acaí, line-caught poke, cold-press juice, breakfast burritos that don't apologize. Made fresh. Made fast. Made right.</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">See the menu
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#location" class="btn-link">Find the drive-thru →</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-bowl">
+      <div class="hero-bowl-rim"></div>
+      <div class="hero-fruit g1"></div>
+      <div class="hero-fruit g2"></div>
+      <div class="hero-fruit s1"></div>
+      <div class="hero-fruit s2"></div>
+      <div class="hero-fruit s3"></div>
+      <div class="hero-fruit s4"></div>
+      <div class="hero-fruit b1"></div>
+      <div class="hero-fruit b2"></div>
+    </div>
+    <div class="hero-tag"><span class="pulse"></span>Open now · 102°F outside</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="est-marquee" aria-hidden="true">
+  <div class="marq-inner">
+    <span class="marq-item"><span class="dot"></span>The OG Bowl <em>· $12</em></span>
+    <span class="marq-item"><span class="dot"></span>Great White Poke <em>· $18</em></span>
+    <span class="marq-item"><span class="dot"></span>Hella Green Smoothie</span>
+    <span class="marq-item"><span class="dot"></span>Beast Mode Shake <em>· 25g protein</em></span>
+    <span class="marq-item"><span class="dot"></span>Strawberry Jam Matcha</span>
+    <span class="marq-item"><span class="dot"></span>Bone Broth <em>· 10g protein</em></span>
+    <span class="marq-item"><span class="dot"></span>Cold Assassin Juice</span>
+    <span class="marq-item"><span class="dot"></span>Sunrise Fuel Burrito</span>
+    <span class="marq-item"><span class="dot"></span>Nutty Toast</span>
+    <span class="marq-item"><span class="dot"></span>Vaccine Shot</span>
+    <!-- duplicate -->
+    <span class="marq-item"><span class="dot"></span>The OG Bowl <em>· $12</em></span>
+    <span class="marq-item"><span class="dot"></span>Great White Poke <em>· $18</em></span>
+    <span class="marq-item"><span class="dot"></span>Hella Green Smoothie</span>
+    <span class="marq-item"><span class="dot"></span>Beast Mode Shake <em>· 25g protein</em></span>
+    <span class="marq-item"><span class="dot"></span>Strawberry Jam Matcha</span>
+    <span class="marq-item"><span class="dot"></span>Bone Broth <em>· 10g protein</em></span>
+    <span class="marq-item"><span class="dot"></span>Cold Assassin Juice</span>
+    <span class="marq-item"><span class="dot"></span>Sunrise Fuel Burrito</span>
+    <span class="marq-item"><span class="dot"></span>Nutty Toast</span>
+    <span class="marq-item"><span class="dot"></span>Vaccine Shot</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div>
+    <p class="story-label">Our story · Phoenix, 2026</p>
+    <h2 class="story-hed">We built the<br>drive-thru we<br><em>actually wanted</em><br>to roll through.</h2>
+  </div>
+  <div class="story-body">
+    <p class="lead">A drive-thru window is the most honest restaurant format there is. You're in. You're out. There's no atmosphere to hide behind. The food has to be the whole point.</p>
+    <p>For thirty years the only healthy option on the way to work in Phoenix was the bottle of water you bought next to the gas pump. Drive-thru meant something between salty, fried, and fluorescent. We refused to accept that as a category.</p>
+    <p>So in spring 2026, we opened a small white-brick building at the corner of South Central and Mojave. We put a sun on the wall, a flag on the roof, and a menu inside that we'd be willing to feed our own kids: organic acaí, line-caught ahi, single-origin coffee, cold-pressed juice, bone broth, breakfast burritos with real eggs.</p>
+    <p>That building is now <strong>Aryze #001</strong>. We're hiring for #002. And we're writing the playbook for what a healthy national drive-thru actually feels like — one window, one neighborhood, one bowl at a time.</p>
+    <div class="story-sig">
+      <div class="sig-mark">A</div>
+      <div>
+        <div class="sig-name">The Aryze team</div>
+        <div class="sig-role">Phoenix, Arizona</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING -->
+<section class="sourcing" id="sourcing">
+  <div class="src-top">
+    <div>
+      <p class="src-label">What's in the bowl</p>
+      <h2 class="src-hed">Ingredients<br><em>we'd actually</em><br>eat ourselves.</h2>
+    </div>
+    <p class="src-intro">No mystery powders. No "natural flavoring" that means nothing. Every base ingredient is named, and we name it twice — once on the wall, once on your receipt. Organic where it counts, local where it grows, line-caught where it swims.</p>
+  </div>
+  <div class="src-grid">
+    <div class="src-item">
+      <div class="src-num">100<small>%</small></div>
+      <div class="src-name">Organic Acaí</div>
+      <div class="src-desc">Single-origin pulp from the Amazonian Pará region. Frozen at source, never reconstituted.</div>
+    </div>
+    <div class="src-item">
+      <div class="src-num">48<small>g</small></div>
+      <div class="src-name">Wild Ahi · Per Bowl</div>
+      <div class="src-desc">Line-caught Pacific yellowfin marinated daily in GF soy, sesame, citrus, ginger, macadamia.</div>
+    </div>
+    <div class="src-item">
+      <div class="src-num">06<small>am</small></div>
+      <div class="src-name">Juice Pressed Daily</div>
+      <div class="src-desc">Every juice and shot is cold-pressed the morning it's sold. Kale, ginger, turmeric, cayenne — straight from the press.</div>
+    </div>
+    <div class="src-item">
+      <div class="src-num">00<small></small></div>
+      <div class="src-name">Junk Ingredients</div>
+      <div class="src-desc">No high-fructose corn syrup. No seed oils. No "natural flavoring." If you can't pronounce it, we don't serve it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DESERT BAND -->
+<div class="desert">
+  <svg viewBox="0 0 1440 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky-a" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0d2438"/>
+        <stop offset="1" stop-color="#1a3a55"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="280" fill="url(#sky-a)"/>
+    <circle cx="1180" cy="80" r="34" fill="#f5c32c"/>
+    <g stroke="#f5c32c" stroke-width="2.5" stroke-linecap="round">
+      <line x1="1180" y1="32" x2="1180" y2="42"/>
+      <line x1="1180" y1="118" x2="1180" y2="128"/>
+      <line x1="1132" y1="80" x2="1142" y2="80"/>
+      <line x1="1218" y1="80" x2="1228" y2="80"/>
+      <line x1="1146" y1="46" x2="1153" y2="53"/>
+      <line x1="1207" y1="107" x2="1214" y2="114"/>
+      <line x1="1214" y1="46" x2="1207" y2="53"/>
+      <line x1="1153" y1="107" x2="1146" y2="114"/>
+    </g>
+    <path d="M0 220 L 180 110 L 240 145 L 320 80 L 420 160 L 540 130 L 640 175 L 720 105 L 820 155 L 920 135 L 1040 95 L 1180 145 L 1280 115 L 1440 165 L 1440 280 L 0 280 Z" fill="#0a1a26"/>
+    <path d="M0 240 L 120 200 L 280 235 L 420 215 L 620 245 L 800 210 L 960 235 L 1120 205 L 1280 240 L 1440 215 L 1440 280 L 0 280 Z" fill="#2bb6a8" opacity="0.4"/>
+    <!-- saguaros -->
+    <g fill="#2bb6a8">
+      <path d="M120 240 L 120 175 Q 120 165 130 165 L 130 195 Q 130 200 137 200 L 137 240 Z M 120 200 Q 105 200 105 215 L 105 230 L 112 230 L 112 215 Q 112 207 120 207 Z"/>
+      <path d="M380 240 L 380 155 Q 380 145 392 145 L 392 235 L 380 235 Z M 380 175 Q 365 175 365 195 L 365 215 L 372 215 L 372 195 Q 372 184 380 184 Z M 392 180 Q 408 180 408 200 L 408 220 L 401 220 L 401 200 Q 401 189 392 189 Z"/>
+      <path d="M900 240 L 900 185 Q 900 175 910 175 L 910 240 Z M 900 200 Q 888 200 888 215 L 888 230 L 894 230 L 894 215 Q 894 209 900 209 Z"/>
+      <path d="M1280 240 L 1280 145 Q 1280 135 1292 135 L 1292 232 L 1280 232 Z M 1280 165 Q 1265 165 1265 185 L 1265 205 L 1272 205 L 1272 185 Q 1272 174 1280 174 Z"/>
+    </g>
+  </svg>
+</div>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-intro">
+    <div class="menu-intro-text">
+      <div class="label">Made fresh daily · Aryze #001</div>
+      <h2>The menu, in <em>full.</em></h2>
+    </div>
+    <div class="menu-intro-aside">
+      <strong>Order ahead from your car.</strong>
+      Add notes, add boosts, set a pickup time. Or roll up to the window — both work the same.
+    </div>
+  </div>
+
+  <!-- 01 ACAI -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">01 / 08</span>
+      <h3>Açaí <em>bowls</em></h3>
+      <p class="note">Organic Pará acaí, blended every order. Add PB or almond butter +$1.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">The OG Bowl</div>
+          <div class="item-desc">Organic acaí, organic gluten-free granola, banana, strawberry, blueberry, coconut shavings, wildflower honey.</div>
+        </div>
+        <div class="item-price">$12 <small>· 16oz</small> / $16 <small>· 24oz</small></div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">The Nutty Bowl</div>
+          <div class="item-desc">Organic acaí, GF granola, banana, organic peanut butter, sliced almonds, hemp seed, bee pollen, honey.</div>
+        </div>
+        <div class="item-price">$12 <small>· 16oz</small> / $16 <small>· 24oz</small></div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Cheat Day</div>
+          <div class="item-desc">Organic acaí, banana, GF granola, Nutella, wildflower honey. Yes, we made one with Nutella. No, we're not sorry.</div>
+        </div>
+        <div class="item-price">$12 <small>· 16oz</small> / $16 <small>· 24oz</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 POKE -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">02 / 08</span>
+      <h3>Fresh <em>poke</em></h3>
+      <p class="note">Make it Piranha-style with our spicy 'AF' sauce.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Great White <span class="item-protein">48g protein</span></div>
+          <div class="item-desc">Line-caught wild ahi marinated in gluten-free soy, sesame oil, fresh-squeezed OJ, ginger, garlic, green onion, orange zest, black sesame, crushed macadamia nuts.</div>
+        </div>
+        <div class="item-price">$18</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 SHAKES -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">03 / 08</span>
+      <h3>Protein <em>shakes</em></h3>
+      <p class="note">25g protein each. Whey, plant, or collagen — your call.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Dragon Slayer <span class="item-protein">25g</span></div>
+          <div class="item-desc">Organic acaí, blueberry, raspberry, blackberry, strawberry, banana, vanilla whey, organic PB, cinnamon, almond milk.</div>
+        </div>
+        <div class="item-price">$12.50</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Green Goddess <span class="item-protein">25g</span></div>
+          <div class="item-desc">Spinach, mango, pineapple, banana, organic plant protein, house-made almond milk.</div>
+        </div>
+        <div class="item-price">$12.50</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Rocket Fuel <span class="item-protein">25g</span></div>
+          <div class="item-desc">Cold-brew coffee, banana, organic PB, vanilla whey, chia, flaxseed, almond milk.</div>
+        </div>
+        <div class="item-price">$12.50</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Beast Mode <span class="item-protein">25g</span></div>
+          <div class="item-desc">Organic acaí, strawberry, banana, organic PB, vanilla whey, almond milk.</div>
+        </div>
+        <div class="item-price">$12.50</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 SMOOTHIES -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">04 / 08</span>
+      <h3><em>Smoothies</em></h3>
+      <p class="note">Whole fruit, almond milk, nothing powdered. $1 + $2 boosts available.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Berry Bomb</div>
+          <div class="item-desc">Organic acaí, strawberry, banana, blueberry, raspberry, blackberry, house-made almond milk.</div>
+        </div>
+        <div class="item-price">$10</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Hella Green <span class="item-fav">Fan fav</span></div>
+          <div class="item-desc">Spinach, banana, pineapple, kale, mango, blackberry, house-made almond milk.</div>
+        </div>
+        <div class="item-price">$10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 BURRITOS -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">05 / 08</span>
+      <h3>Breakfast <em>burritos</em></h3>
+      <p class="note">Made with whole ingredients. Cage-free eggs, real cheese, no shortcuts.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Sunrise Fuel</div>
+          <div class="item-desc">Diced potatoes, scrambled eggs, cheddar cheese.</div>
+        </div>
+        <div class="item-price">$10.50</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Desert Charge</div>
+          <div class="item-desc">Fresh bacon, scrambled eggs, cheddar cheese.</div>
+        </div>
+        <div class="item-price">$10.50</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 TOAST -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">06 / 08</span>
+      <h3>Elevated <em>toast</em></h3>
+      <p class="note">Sourdough, toasted to order.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Nutty Toast <span class="item-fav">Fan fav</span></div>
+          <div class="item-desc">Sourdough, sliced banana, peanut butter, wildflower honey, chia seeds.</div>
+        </div>
+        <div class="item-price">$10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 JUICES -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">07 / 08</span>
+      <h3>Juices + <em>shots</em></h3>
+      <p class="note">Cold-pressed every morning. Boost as needed.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">Liquid Greens</div>
+          <div class="item-desc">Kale, spinach, cucumber, celery, green apple, lemon, ginger.</div>
+        </div>
+        <div class="item-price">$11</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Cold Assassin</div>
+          <div class="item-desc">Grapefruit, orange, lemon, turmeric, ginger, cayenne pepper.</div>
+        </div>
+        <div class="item-price">$11</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Vaccine Shot <span class="item-fav">Fan fav</span></div>
+          <div class="item-desc">Lemon, ginger, turmeric. Single or double.</div>
+        </div>
+        <div class="item-price">$3 / $5</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Flu Shot</div>
+          <div class="item-desc">Lemon, ginger, cayenne pepper. Single or double.</div>
+        </div>
+        <div class="item-price">$3 / $5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 COFFEE / MATCHA / BROTH -->
+  <div class="menu-cat">
+    <div class="cat-title">
+      <span class="num">08 / 08</span>
+      <h3>Matcha, coffee + <em>broth</em></h3>
+      <p class="note">Local roaster, ceremonial matcha, slow-simmered broth.</p>
+    </div>
+    <div class="cat-items">
+      <div class="item">
+        <div>
+          <div class="item-head">The Original Matcha</div>
+          <div class="item-desc">Ceremonial-grade matcha with cream top.</div>
+        </div>
+        <div class="item-price">$8</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Strawberry Jam Matcha <span class="item-fav">Fan fav</span></div>
+          <div class="item-desc">Matcha, organic strawberry jam, cream top.</div>
+        </div>
+        <div class="item-price">$8</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Fresh Drip Coffee</div>
+          <div class="item-desc">Hot or iced. Premium local roaster, brewed all day.</div>
+        </div>
+        <div class="item-price">$4.50</div>
+      </div>
+      <div class="item">
+        <div>
+          <div class="item-head">Bone Broth · Chicken or Beef <span class="item-protein">10g</span></div>
+          <div class="item-desc">Collagen-rich, slow-simmered with fresh veggies, herbs, fresh lemon, dash of cayenne.</div>
+        </div>
+        <div class="item-price">$7</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press">
+  <div class="press-label">First impressions · Phoenix locals · Week one</div>
+  <p class="press-quote">"The only drive-thru in Phoenix where I roll up in my workout clothes and roll away with a poke bowl that has 48 grams of protein. This shouldn't be normal. It should be."</p>
+  <p class="press-source">— Maya R. · South Central regular</p>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div>
+    <p class="loc-label">Roll through · Aryze #001</p>
+    <h2 class="loc-hed">South Central<br>+ Mojave.<br><em>The white-brick one.</em></h2>
+    <p class="loc-addr">1701 S Central Ave</p>
+    <p class="loc-cross">Phoenix, AZ 85004 · Downtown, off Central + Mojave</p>
+    <div class="loc-hours">
+      <div class="hr"><span class="hr-day">Monday – Friday</span><span class="hr-time">7:00 AM – 7:00 PM</span></div>
+      <div class="hr"><span class="hr-day">Saturday</span><span class="hr-time">8:00 AM – 5:00 PM</span></div>
+      <div class="hr"><span class="hr-day">Sunday</span><span class="hr-time">8:00 AM – 5:00 PM</span></div>
+    </div>
+    <div class="loc-actions">
+      <a href="https://maps.google.com/?q=1701+S+Central+Ave+Phoenix+AZ" target="_blank" rel="noopener" class="btn-primary">Get directions
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="tel:+16026889106" class="btn-link">(602) 688-9106 →</a>
+    </div>
+  </div>
+  <div class="loc-card">
+    <div class="loc-card-top">
+      <div class="loc-card-label">Drive-thru + walk-up</div>
+      <h3>Two windows.<br><em>Same menu.</em><br>Same speed.</h3>
+      <p class="loc-card-body">Pull up to the drive-thru or walk up to the Grab & Go window. Order ahead in the app and skip both lines — your order is bagged and waiting.</p>
+    </div>
+    <div class="loc-card-bottom">
+      <div class="loc-card-stat"><div class="v">3<small>min</small></div><div class="l">Avg wait</div></div>
+      <div class="loc-card-stat"><div class="v">14<small>hr</small></div><div class="l">Per week open</div></div>
+      <div class="loc-card-stat"><div class="v">001</div><div class="l">Of many</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">Aryze<br>Eatery.</div>
+      <p class="foot-tag">The Healthy Drive-Thru. Phoenix, Arizona. Established 2026. Built for the desert — one window at a time.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Menu</h4>
+      <a href="#menu">Acaí bowls</a>
+      <a href="#menu">Poke bowls</a>
+      <a href="#menu">Protein shakes</a>
+      <a href="#menu">Smoothies</a>
+      <a href="#menu">Juices + shots</a>
+      <a href="#menu">Breakfast burritos</a>
+      <a href="#menu">Toast + matcha</a>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <a href="#location">Aryze #001 · Phoenix</a>
+      <a href="#location">Hours</a>
+      <a href="#">Catering</a>
+      <a href="#">Order ahead</a>
+      <a href="#">Careers · Phoenix</a>
+    </div>
+    <div class="foot-col">
+      <h4>Follow</h4>
+      <a href="https://instagram.com/aryzeeatery" target="_blank" rel="noopener">@aryzeeatery</a>
+      <a href="#">Tiktok</a>
+      <a href="#">Newsletter</a>
+      <a href="mailto:hello@aryzeeatery.com">hello@aryzeeatery.com</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aryze Eatery · Phoenix, AZ</span>
+    <span>Made for the desert · Made for you</span>
+  </div>
+</footer>
+
+</body>
+</html>
