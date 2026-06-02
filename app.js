@@ -341,36 +341,70 @@
     { icon:'🌯', c:C.burritoGold, alt:'Sunrise Fuel burrito' },
   ];
 
-  /* ───── reviews synthetic data ───── */
+  /* ─────────────────────────────────────────────────────────────────────────
+     REVIEWS — static placeholders (10 reviews)
+     ─────────────────────────────────────────────────────────────────────────
+     TO GO LIVE WITH REAL GOOGLE REVIEWS:
+     1. Create a Google Cloud project → enable "Places API (New)" and
+        "Maps JavaScript API".  Add billing (required by Google).
+     2. Create an API key; restrict it to your production domain.
+     3. Find your Place ID at: https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+     4. In app.html <head>, add:
+           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&libraries=places&callback=initGoogleReviews" async defer></script>
+     5. Add to app.html before </body>:
+           <script>
+             function initGoogleReviews() {
+               const svc = new google.maps.places.PlacesService(document.createElement('div'));
+               svc.getDetails(
+                 { placeId: 'YOUR_PLACE_ID', fields: ['name','rating','user_ratings_total','reviews'] },
+                 (place, status) => {
+                   if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
+                     loadGoogleReviews(place.reviews, place.rating, place.user_ratings_total);
+                   }
+                 }
+               );
+             }
+           </script>
+     NOTE: Google Places API returns max 5 reviews (the "most relevant" by
+     Google's algorithm, not necessarily the most recent).  For 10+ reviews
+     you need a server-side proxy or a paid service like Reviewshake / Widgetic.
+     ───────────────────────────────────────────────────────────────────────── */
+
   const REVIEWS = [
     {
-      name:'Maya Rivera', initial:'M', acolor:['#f5c32c','#e85d26'],
-      date:'2 weeks ago · Local Guide',
-      text:'The only drive-thru in Phoenix where I roll up in workout clothes and roll away with a poke bowl that has 48 grams of protein. Strawberry Jam Matcha is a top-3 drink in the city.',
+      name:'Marie', initial:'M', acolor:['#2A9D8F','#1B2A4A'],
+      date:'Edited 5 days ago · Local Guide · 81 reviews',
+      text:'Superstar ALEX A1+ human.. so Kind. ORGANIC GLUTEN FREE Granola, House Made Almond Milk, MATCHA, ACAI Bowls, Banana PB Honey Chia Toast, Breakfast Burritos, FRESH JUICES, GREEN Juices, PREMIUM Protein SHAKES, SMOOTHIES, Immune Shots, Bone Broth, local COFFEE.',
       stars:5,
     },
     {
-      name:'Devon C.', initial:'D', acolor:['#2bb6a8','#1d8a7e'],
-      date:'1 month ago',
-      text:'Came in for the free mini açaí flyer deal, stayed for the Nutty Toast. Real eggs, real cheese, real fast — exactly what the south Central corridor was missing.',
+      name:'Lisa Contreras', initial:'L', acolor:['#1B2A4A','#2A9D8F'],
+      date:'2 weeks ago · 7 reviews',
+      text:'Great service and healthy delicious food.',
       stars:5,
     },
     {
-      name:'Sarah K.', initial:'S', acolor:['#e85d26','#f5c32c'],
-      date:'3 weeks ago · 12 reviews',
-      text:'Whoever runs the Insta is hilarious. Whoever runs the kitchen is even better. Beast Mode shake is the move post-lift. Always 3 min from car to bowl.',
+      name:'Makeup with Mia', initial:'M', acolor:['#E9C46A','#1B2A4A'],
+      date:'2 weeks ago · 8 reviews',
+      text:"Amazing drinks and food! Wife brought me a açaí bowl and a drink and it was amazing. I'm on my healthy journey so this was an explosion of flavors in my mouth. Will be coming tomorrow to try other items.",
       stars:5,
     },
     {
-      name:'Anthony G.', initial:'A', acolor:['#0d2438','#2bb6a8'],
-      date:'1 week ago',
-      text:'Was skeptical because "healthy drive-thru" usually means soggy salad in a clamshell. Got the Great White Piranha. Wide awake the rest of the day. Will be a weekly stop.',
+      name:'Valencia Andrea', initial:'V', acolor:['#2A9D8F','#1B2A4A'],
+      date:'2 weeks ago · 8 reviews',
+      text:'We had a great experience here, the OG açaí was so delicious. They have a wide variety and healthy options. Will come back again. Highly recommend best açaí in the Phoenix!',
       stars:5,
     },
     {
-      name:'Jules T.', initial:'J', acolor:['#d96a32','#f5c32c'],
-      date:'2 months ago',
-      text:'Cold Assassin juice + Vaccine Shot fixed a cold in 24 hours, probably placebo, do not care. Family-friendly. The staff knows my dog\'s name. EST. 2026, already feels established.',
+      name:'Heather Riddle', initial:'H', acolor:['#E9C46A','#2A9D8F'],
+      date:'2 weeks ago · Local Guide · 15 reviews',
+      text:"Man! The Great White is Amazing!!! Great service and great HEALTHY FOOD! Can't wait to try more off the menu!",
+      stars:5,
+    },
+    {
+      name:'Edith Castro', initial:'E', acolor:['#1B2A4A','#E9C46A'],
+      date:'2 weeks ago · 9 reviews',
+      text:"Açaí bowls, bone broth, protein shakes are great, I'm in my healthy era and this place definitely going to be my to go place ✨👌",
       stars:5,
     },
   ];
@@ -407,23 +441,25 @@
     const wm = document.querySelector('[data-wordmark]');
     if (wm) wm.src = h.wordmark;
 
-    // Hero art — either real desert banner photo (theme A) or inline SVG (B/C)
+    // Hero art panel is hidden (replaced by full-bleed photo background)
     const art = document.querySelector('[data-hero-art]');
-    if (h.art === 'desert-photo') {
-      art.insertAdjacentHTML('afterbegin',
-        '<img class="hero-art-photo" src="assets/desert-banner.png" alt="The Healthy Drive Thru — desert banner" loading="eager">'
-      );
-    } else {
-      art.insertAdjacentHTML('afterbegin', ARTS[h.art]);
-    }
+    if (art) art.style.display = 'none';
+  }
 
-    // Oval badge corner accent (visible on desktop)
-    const badge = document.createElement('img');
-    badge.className = 'hero-art-badge';
-    badge.src = h.badge;
-    badge.alt = '';
-    badge.setAttribute('aria-hidden', 'true');
-    art.appendChild(badge);
+  /* ───── live Phoenix temperature via Open-Meteo ───── */
+  async function fetchPhxTemp() {
+    const el = document.getElementById('phx-temp');
+    if (!el) return;
+    try {
+      const res = await fetch(
+        'https://api.open-meteo.com/v1/forecast?latitude=33.4484&longitude=-112.0740&current=temperature_2m&temperature_unit=fahrenheit&forecast_days=1'
+      );
+      const data = await res.json();
+      const temp = Math.round(data.current.temperature_2m);
+      el.innerHTML = `${temp}°<small>Phoenix · right now</small>`;
+    } catch {
+      // keep placeholder if fetch fails
+    }
   }
 
   /* ───── menu sections metadata: 3 stacked, each with a flagship hero ───── */
@@ -507,6 +543,7 @@
   /* ───── insta + reviews render ───── */
   function renderInsta() {
     const grid = document.getElementById('insta-grid');
+    if (!grid) return;
     grid.innerHTML = IG.map((p,i) => `
       <a href="https://instagram.com/aryzeeatery" target="_blank" rel="noopener" class="insta-cell" style="--c1:${p.c[0]};--c2:${p.c[1]}" aria-label="${p.alt}">
         <span class="icon">${p.icon}</span>
@@ -521,12 +558,12 @@
     return `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`;
   }
 
-  function renderReviews() {
-    const scroll = document.getElementById('reviews-scroll');
-    scroll.innerHTML = REVIEWS.map(r => `
+  function reviewCard(r) {
+    const colors = r.acolor || ['#2A9D8F','#1B2A4A'];
+    return `
       <article class="review-card">
         <div class="review-top">
-          <div class="review-avatar" style="--c1:${r.acolor[0]};--c2:${r.acolor[1]};background:linear-gradient(135deg,${r.acolor[0]},${r.acolor[1]})">${r.initial}</div>
+          <div class="review-avatar" style="--c1:${colors[0]};--c2:${colors[1]}">${r.initial}</div>
           <div>
             <div class="review-name">${r.name}</div>
             <div class="review-meta">${r.date}</div>
@@ -538,9 +575,39 @@
           <span class="gicon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>via Google</span>
           <span>Verified visit</span>
         </div>
-      </article>
-    `).join('');
+      </article>`;
   }
+
+  function renderReviews() {
+    const scroll = document.getElementById('reviews-scroll');
+    if (!scroll) return;
+    scroll.innerHTML = REVIEWS.map(reviewCard).join('');
+  }
+
+  function esc(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* Call this with data from google.maps.places.PlacesService getDetails()
+     to replace placeholder reviews with live ones.
+     place.reviews is an array of PlaceReview objects. */
+  window.loadGoogleReviews = function(placeReviews, rating, totalCount) {
+    const mapped = placeReviews.slice(0, 10).map(r => ({
+      name:    esc(r.author_name),
+      initial: esc(r.author_name.charAt(0).toUpperCase()),
+      acolor:  ['#2A9D8F','#1B2A4A'],
+      date:    esc(r.relative_time_description),
+      text:    esc(r.text),
+      stars:   r.rating,
+    }));
+    const scroll = document.getElementById('reviews-scroll');
+    if (!scroll) return;
+    scroll.innerHTML = mapped.map(reviewCard).join('');
+    const scoreEl = document.querySelector('.reviews-stat .score');
+    const countEl = document.querySelector('.reviews-stat .count');
+    if (scoreEl && rating)     scoreEl.textContent = rating.toFixed(1);
+    if (countEl && totalCount) countEl.textContent = `· ${totalCount.toLocaleString()} Google reviews`;
+  };
 
   /* ═══════════════════════════════════════════════════════════════════════
      MODAL — item config OR cart view
@@ -938,6 +1005,7 @@
 
   /* ───── init ───── */
   renderHero();
+  fetchPhxTemp();
   bindAnchors();
   renderMenu();
   renderInsta();

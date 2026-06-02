@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d2438">
+<meta name="theme-color" content="#1B2A4A">
 <title>Aryze Eatery — The Healthy Drive-Thru · Phoenix, AZ</title>
 <meta name="description" content="Phoenix's first actually-healthy drive-thru. Organic açaí bowls, line-caught poke, protein shakes, cold-press juice. Made fresh, made fast. 1701 S Central Ave.">
 <link rel="icon" type="image/png" href="assets/logos/monogram-a.png">
@@ -29,10 +29,9 @@ input,select,textarea{font-family:inherit;font-size:inherit}
 
 :root{
   /* brand */
-  --navy:#0d2438; --navy-deep:#08182a; --navy-mid:#0f2740;
-  --gold:#f5c32c; --gold-deep:#d9a514;
-  --teal:#2bb6a8; --teal-deep:#1d8a7e;
-  --rust:#e85d26; --rust-deep:#b04018;
+  --navy:#1B2A4A; --navy-deep:#0e1d33; --navy-mid:#152238;
+  --gold:#E9C46A; --gold-deep:#c9a44e;
+  --teal:#2A9D8F; --teal-deep:#1e7a6e;
   --cream:#f4ecd9; --paper:#fbf6e9; --paper-warm:#f0e6c8;
   --white:#fff;
   --ink:#0a1a26;
@@ -42,7 +41,7 @@ input,select,textarea{font-family:inherit;font-size:inherit}
   --fg: var(--ink);
   --fg-muted: rgba(10,26,38,0.62);
   --fg-faint: rgba(10,26,38,0.42);
-  --accent: var(--rust);
+  --accent: var(--teal);
   --hi: var(--gold);
   --teal-on: var(--teal-deep);
   --surface: #fff;
@@ -63,7 +62,7 @@ body.theme-a{
   --fg: var(--navy);
   --fg-muted: rgba(13,36,56,0.62);
   --fg-faint: rgba(13,36,56,0.42);
-  --accent: var(--rust);
+  --accent: var(--teal);
   --hi: var(--gold);
   --teal-on: var(--teal-deep);
   --surface: #fff;
@@ -95,7 +94,7 @@ body.theme-c{
   --fg: var(--navy);
   --fg-muted: rgba(13,36,56,0.65);
   --fg-faint: rgba(13,36,56,0.40);
-  --accent: var(--rust);
+  --accent: var(--teal);
   --hi: var(--gold);
   --teal-on: var(--teal-deep);
   --surface: #fff;
@@ -111,7 +110,7 @@ body.theme-d{
   --fg: var(--navy);
   --fg-muted: rgba(13,36,56,0.65);
   --fg-faint: rgba(13,36,56,0.42);
-  --accent: var(--rust);
+  --accent: var(--teal);
   --hi: var(--gold);
   --teal-on: var(--teal-deep);
   --surface: #fff;
@@ -130,8 +129,8 @@ body.theme-e{
   --accent: var(--gold);
   --hi: var(--teal);
   --teal-on: var(--teal);
-  --surface: #112538;
-  --surface-2: #0d1c2e;
+  --surface: var(--navy-mid);
+  --surface-2: var(--navy-deep);
   --line: rgba(244,236,217,0.10);
   --line-strong: rgba(244,236,217,0.20);
   --font-display: 'Archivo', sans-serif;
@@ -144,7 +143,7 @@ body.theme-f{
   --fg-muted: rgba(13,36,56,0.65);
   --fg-faint: rgba(13,36,56,0.42);
   --accent: var(--navy);
-  --hi: var(--rust);
+  --hi: var(--teal);
   --teal-on: var(--teal-deep);
   --surface: var(--paper);
   --surface-2: var(--cream);
@@ -167,7 +166,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;font-size:13px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;border-radius:var(--r-full);transition:transform .14s,background .14s,box-shadow .14s;white-space:nowrap;cursor:pointer}
 .btn:active{transform:scale(0.97)}
 .btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--rust-deep)}
+.btn-primary:hover{background:var(--teal-deep)}
 .btn-gold{background:var(--gold);color:var(--navy)}
 .btn-gold:hover{background:var(--gold-deep)}
 .btn-navy{background:var(--navy);color:var(--gold)}
@@ -198,19 +197,21 @@ body.theme-c nav.topnav{background:var(--navy);color:var(--cream);border-bottom:
 body.theme-b .brand-est{color:var(--gold);border-color:rgba(244,236,217,0.18)}
 body.theme-c .brand-est{color:var(--teal);border-color:rgba(244,236,217,0.18)}
 
-.nav-actions{display:flex;align-items:center;gap:8px}
-.nav-pill{display:none;align-items:center;gap:8px;padding:8px 14px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--fg-muted);border-radius:var(--r-full)}
+.nav-actions{display:flex;align-items:center;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav-actions::-webkit-scrollbar{display:none}
+.nav-pill{display:inline-flex;flex-shrink:0;align-items:center;gap:6px;padding:0 8px;min-height:44px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--fg-muted);border-radius:var(--r-full);white-space:nowrap}
 .nav-pill:hover{color:var(--fg);background:var(--surface-2)}
-@media (min-width:720px){.nav-pill{display:inline-flex}}
+@media (min-width:720px){.nav-pill{padding:8px 14px;font-size:11px;letter-spacing:1.5px}}
 
 .nav-cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;padding:9px 13px 9px 11px;background:var(--navy);color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border-radius:var(--r-full)}
 body.theme-b .nav-cart-btn{background:var(--gold);color:var(--navy)}
-body.theme-c .nav-cart-btn{background:var(--rust);color:#fff;border-radius:0;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);padding:9px 18px}
+body.theme-c .nav-cart-btn{background:var(--teal);color:#fff;border-radius:0;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);padding:9px 18px}
 .nav-cart-btn svg{width:16px;height:16px}
-.nav-cart-btn .count{background:var(--rust);color:#fff;border-radius:var(--r-full);min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;padding:0 5px}
+.nav-cart-btn .count{background:var(--teal);color:#fff;border-radius:var(--r-full);min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;padding:0 5px}
 body.theme-b .nav-cart-btn .count{background:var(--navy);color:var(--gold)}
 body.theme-c .nav-cart-btn .count{background:var(--gold);color:var(--navy)}
 .nav-cart-btn .count:empty{display:none}
+@media (min-width:720px){.nav-actions{gap:8px}}
 
 /* ═══════════════════════════════════════════════════════════════════════
    HERO  (3 visual variants share structure)
@@ -237,7 +238,7 @@ body.theme-b .hero-h{font-family:'Archivo',sans-serif;font-weight:900;font-size:
 body.theme-b .hero-h .accent{color:var(--gold)}
 body.theme-b .hero-h .stroke{color:transparent;-webkit-text-stroke:1.5px var(--gold)}
 body.theme-c .hero-h{font-family:'Anton',sans-serif;font-size:58px;line-height:0.88;letter-spacing:0.5px;text-transform:uppercase;font-weight:400}
-body.theme-c .hero-h .accent{color:var(--rust)}
+body.theme-c .hero-h .accent{color:var(--teal)}
 body.theme-c .hero-h .teal{color:var(--teal-deep)}
 @media (min-width:780px){
   body.theme-a .hero-h{font-size:78px}
@@ -245,7 +246,7 @@ body.theme-c .hero-h .teal{color:var(--teal-deep)}
   body.theme-c .hero-h{font-size:104px}
 }
 
-.hero-tag{font-family:'Caveat',cursive;font-size:22px;color:var(--accent);transform:rotate(-1.5deg);display:inline-block;margin-bottom:14px;font-weight:700}
+.hero-tag{font-family:var(--font-display);font-size:18px;color:var(--accent);transform:rotate(-1.5deg);display:inline-block;margin-bottom:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
 body.theme-b .hero-tag{color:var(--gold)}
 .hero-pitch{font-size:15px;line-height:1.6;color:var(--fg-muted);margin-bottom:22px;font-weight:500;max-width:540px}
 body.theme-b .hero-pitch{color:rgba(244,236,217,0.78)}
@@ -279,7 +280,7 @@ body.theme-c .hero-art{border-radius:0;background:var(--navy)}
    ═══════════════════════════════════════════════════════════════════════ */
 .benefits{padding:18px 0;background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 body.theme-b .benefits{background:var(--navy);border-color:rgba(244,236,217,0.08)}
-body.theme-c .benefits{background:var(--navy);color:var(--cream);border-color:var(--rust);border-top:3px solid var(--rust);border-bottom:3px solid var(--rust)}
+body.theme-c .benefits{background:var(--navy);color:var(--cream);border-color:var(--teal);border-top:3px solid var(--teal);border-bottom:3px solid var(--teal)}
 .benefits-scroll{display:flex;gap:10px;padding:0 18px;overflow-x:auto;scrollbar-width:none}
 .benefits-scroll::-webkit-scrollbar{display:none}
 .benefit{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-full);font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--fg)}
@@ -314,6 +315,8 @@ body.theme-c .menu-head h2 em{font-style:normal;color:var(--teal-deep)}
 body.theme-b .anchor-btn{color:var(--fg-muted)}
 body.theme-c .anchor-btn{border-radius:0;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
 
+.menu-image-wrap{width:100%;overflow:auto;-webkit-overflow-scrolling:touch;line-height:0}
+.menu-img{display:block;width:100%;height:auto;touch-action:pan-x pan-y pinch-zoom;max-width:100%}
 /* menu-blocks: vertical stack of 3 sections */
 .menu-blocks{padding:0 18px;display:flex;flex-direction:column;gap:36px}
 @media (min-width:780px){.menu-blocks{gap:56px}}
@@ -324,7 +327,7 @@ body.theme-c .anchor-btn{border-radius:0;clip-path:polygon(8px 0,100% 0,calc(100
 @media (min-width:780px){.menu-block-head{padding-bottom:18px}}
 .menu-block-num{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--accent);letter-spacing:-0.3px;font-style:italic}
 body.theme-b .menu-block-num{font-family:'Archivo',sans-serif;font-weight:900;font-style:normal;color:var(--gold);letter-spacing:2px}
-body.theme-c .menu-block-num{font-family:'Anton',sans-serif;font-style:normal;font-size:22px;color:var(--rust);letter-spacing:0}
+body.theme-c .menu-block-num{font-family:'Anton',sans-serif;font-style:normal;font-size:22px;color:var(--teal);letter-spacing:0}
 .menu-block-title{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;color:var(--fg);letter-spacing:-1px}
 body.theme-b .menu-block-title{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px}
 body.theme-c .menu-block-title{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:44px;letter-spacing:0}
@@ -352,18 +355,18 @@ body.theme-c .menu-block-title{font-family:'Anton',sans-serif;font-weight:400;te
 }
 
 /* shared card chrome */
-.menu-card, .menu-hero-card{background:var(--surface);border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .15s,box-shadow .15s,border-color .15s;position:relative}
+.menu-card, .menu-hero-card{background:var(--surface);border-radius:0;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .15s,box-shadow .15s,border-color .15s;position:relative}
 .menu-card:hover, .menu-hero-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px -16px rgba(13,36,56,0.18);border-color:var(--line-strong)}
 body.theme-b .menu-card, body.theme-b .menu-hero-card{background:var(--surface);border-color:rgba(244,236,217,0.08)}
 body.theme-c .menu-card, body.theme-c .menu-hero-card{border-radius:0;border:2px solid var(--navy)}
 
-.card-img{aspect-ratio:1/1;background:radial-gradient(circle at 50% 40%, var(--c1, #5a1d2d) 0%, var(--c2, #1e0612) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.card-img::before{content:'';position:absolute;top:14%;left:18%;right:18%;height:18%;background:radial-gradient(ellipse,rgba(255,255,255,0.35),transparent 60%);filter:blur(12px);border-radius:50%}
+.card-img{aspect-ratio:1/1;background:var(--c1, var(--navy));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-img::before{display:none}
 .card-img .icon{font-size:42px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));position:relative;z-index:1}
 @media (min-width:560px){.card-img .icon{font-size:52px}}
-.card-flag{position:absolute;top:8px;left:8px;background:var(--gold);color:var(--navy);font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:4px 8px;border-radius:var(--r-full);z-index:2}
-.card-flag.protein{background:var(--rust);color:#fff}
-.card-flag.spicy{background:var(--rust);color:#fff}
+.card-flag{position:absolute;top:8px;left:8px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:4px 8px;border-radius:var(--r-full);z-index:2}
+.card-flag.protein{background:var(--teal);color:#fff}
+.card-flag.spicy{background:var(--teal);color:#fff}
 .card-flag.feature{background:var(--accent);color:#fff}
 body.theme-b .card-flag.feature{background:var(--gold);color:var(--navy)}
 
@@ -372,15 +375,15 @@ body.theme-b .card-flag.feature{background:var(--gold);color:var(--navy)}
 body.theme-a .card-name{font-size:16px;letter-spacing:-0.3px}
 body.theme-b .card-name{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;font-size:14px}
 body.theme-c .card-name{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:0.5px;font-size:18px;line-height:1.0}
-.card-desc{font-size:11px;line-height:1.45;color:var(--fg-faint);font-weight:500;flex:1;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-desc{font-size:12px;line-height:1.45;color:var(--fg-faint);font-weight:500;flex:1;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto}
 .card-price{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--accent);letter-spacing:-0.3px}
 body.theme-b .card-price{font-family:'Archivo',sans-serif;font-weight:900;color:var(--gold)}
-body.theme-c .card-price{font-family:'Anton',sans-serif;font-weight:400;color:var(--rust);font-size:22px}
+body.theme-c .card-price{font-family:'Anton',sans-serif;font-weight:400;color:var(--teal);font-size:22px}
 .card-price small{font-size:10px;color:var(--fg-faint);font-weight:600}
 .card-add{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;background:var(--navy);color:var(--gold);border-radius:var(--r-full);transition:transform .12s;min-width:60px}
 body.theme-b .card-add{background:var(--gold);color:var(--navy)}
-body.theme-c .card-add{background:var(--rust);color:#fff;border-radius:0;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);padding:8px 14px}
+body.theme-c .card-add{background:var(--teal);color:#fff;border-radius:0;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);padding:8px 14px}
 .card-add:active{transform:scale(0.92)}
 .card-add svg{width:11px;height:11px}
 
@@ -404,19 +407,19 @@ body.theme-c .card-add{background:var(--rust);color:#fff;border-radius:0;clip-pa
    D · THUMB STACK — one-handed reach, full-bleed rows, big buttons
    ═══════════════════════════════════════════════════════════════════════ */
 body.theme-d .hero-h{font-family:'Inter',sans-serif;font-weight:900;font-size:42px;line-height:0.95;letter-spacing:-1.5px;text-transform:none}
-body.theme-d .hero-h em{font-style:italic;color:var(--rust);font-weight:800}
-body.theme-d .hero-h .accent{color:var(--rust)}
+body.theme-d .hero-h em{font-style:italic;color:var(--teal);font-weight:800}
+body.theme-d .hero-h .accent{color:var(--teal)}
 @media (min-width:780px){body.theme-d .hero-h{font-size:72px}}
 body.theme-d .menu-block-title{font-family:'Inter',sans-serif;font-weight:900;text-transform:none;letter-spacing:-0.8px;font-size:30px}
 @media (min-width:780px){body.theme-d .menu-block-title{font-size:42px}}
-body.theme-d .menu-block-num{font-family:'Inter',sans-serif;font-style:normal;font-weight:900;color:var(--rust);font-size:12px;letter-spacing:3px;text-transform:uppercase;background:rgba(232,93,38,0.12);padding:5px 10px;border-radius:var(--r-full)}
+body.theme-d .menu-block-num{font-family:'Inter',sans-serif;font-style:normal;font-weight:900;color:var(--teal);font-size:12px;letter-spacing:3px;text-transform:uppercase;background:rgba(42,157,143,0.12);padding:5px 10px;border-radius:var(--r-full)}
 body.theme-d .card-name{font-family:'Inter',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.3px;text-transform:none}
-body.theme-d .card-price{font-family:'Inter',sans-serif;font-weight:900;color:var(--rust);font-size:20px}
+body.theme-d .card-price{font-family:'Inter',sans-serif;font-weight:900;color:var(--teal);font-size:20px}
 
 body.theme-d .menu-block-grid{grid-template-columns:1fr !important;gap:14px}
 body.theme-d .menu-block-side{display:contents !important}
 body.theme-d .menu-card,
-body.theme-d .menu-hero-card{flex-direction:row;align-items:stretch;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 24px -16px rgba(13,36,56,0.18)}
+body.theme-d .menu-hero-card{flex-direction:row;align-items:stretch;border-radius:0;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 24px -16px rgba(13,36,56,0.18)}
 body.theme-d .card-img{flex:0 0 130px;aspect-ratio:1/1;border-radius:0}
 @media (min-width:560px){body.theme-d .card-img{flex:0 0 170px}}
 body.theme-d .menu-hero-card .card-img{flex:0 0 160px}
@@ -425,7 +428,7 @@ body.theme-d .menu-hero-card .card-img .icon{font-size:64px}
 body.theme-d .card-img .icon{font-size:48px}
 body.theme-d .card-body{padding:16px 16px 16px;gap:6px}
 body.theme-d .card-desc{font-size:12px;-webkit-line-clamp:3}
-body.theme-d .card-add{min-width:88px;padding:11px 16px;font-size:11px;background:var(--rust);color:#fff}
+body.theme-d .card-add{min-width:88px;padding:11px 16px;font-size:11px;background:var(--teal);color:#fff}
 body.theme-d .card-add svg{width:13px;height:13px}
 body.theme-d .card-foot{margin-top:10px}
 
@@ -466,12 +469,12 @@ body.theme-e .menu-hero-card{
   max-width:340px;
   scroll-snap-align:start;
   border:1px solid rgba(244,236,217,0.1);
-  background:linear-gradient(180deg,#1a3a55 0%,#0a1c2e 100%);
+  background:var(--surface);
   border-radius:var(--r-lg);
   box-shadow:0 24px 50px -20px rgba(0,0,0,0.6);
 }
 @media (min-width:780px){body.theme-e .menu-card,body.theme-e .menu-hero-card{flex:0 0 360px}}
-body.theme-e .menu-hero-card{flex:0 0 84vw;max-width:380px;background:linear-gradient(180deg,#2a5070 0%,#0a1c2e 100%);border-color:var(--gold)}
+body.theme-e .menu-hero-card{flex:0 0 84vw;max-width:380px;background:var(--navy-mid);border-color:var(--gold)}
 body.theme-e .card-img{aspect-ratio:4/5}
 body.theme-e .card-img .icon{font-size:72px}
 body.theme-e .menu-hero-card .card-img .icon{font-size:96px}
@@ -496,15 +499,15 @@ body.theme-e .menu-block::after{
    F · DENSE LIST — paper-menu digitized, list rows + small thumbs
    ═══════════════════════════════════════════════════════════════════════ */
 body.theme-f .hero-h{font-family:'Fraunces',serif;font-weight:400;font-size:42px;line-height:0.95;letter-spacing:-1.5px}
-body.theme-f .hero-h em{font-style:italic;color:var(--rust);font-weight:500}
-body.theme-f .hero-h .accent{color:var(--rust);font-style:italic}
+body.theme-f .hero-h em{font-style:italic;color:var(--teal);font-weight:500}
+body.theme-f .hero-h .accent{color:var(--teal);font-style:italic}
 @media (min-width:780px){body.theme-f .hero-h{font-size:78px}}
 body.theme-f .menu-block-title{font-family:'Fraunces',serif;font-weight:400;color:var(--navy);font-size:34px;letter-spacing:-0.8px;font-style:italic}
 @media (min-width:780px){body.theme-f .menu-block-title{font-size:48px}}
-body.theme-f .menu-block-num{font-family:'Fraunces',serif;font-style:italic;color:var(--rust);font-weight:500;font-size:18px}
+body.theme-f .menu-block-num{font-family:'Fraunces',serif;font-style:italic;color:var(--teal);font-weight:500;font-size:18px}
 body.theme-f .menu-block-sub{font-style:italic;color:var(--fg-muted);font-size:13px}
 body.theme-f .card-name{font-family:'Fraunces',serif;font-weight:600;font-size:17px;letter-spacing:-0.3px}
-body.theme-f .card-price{font-family:'Fraunces',serif;font-weight:500;color:var(--rust);font-size:19px}
+body.theme-f .card-price{font-family:'Fraunces',serif;font-weight:500;color:var(--teal);font-size:19px}
 
 body.theme-f .menu-block-grid{grid-template-columns:1fr !important;gap:0;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--line);overflow:hidden}
 body.theme-f .menu-block-side{display:contents !important}
@@ -540,7 +543,7 @@ body.theme-f .card-add{padding:7px 12px;font-size:10px;min-width:auto;background
 .cart-fab{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none;padding:14px 18px;background:var(--navy);color:var(--gold);border-radius:var(--r-full);box-shadow:0 20px 40px -14px rgba(0,0,0,0.5);align-items:center;justify-content:space-between;gap:12px;transition:transform .2s;animation:slideUp .25s ease-out}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 body.theme-b .cart-fab{background:var(--gold);color:var(--navy)}
-body.theme-c .cart-fab{background:var(--rust);color:#fff;border-radius:0;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+body.theme-c .cart-fab{background:var(--teal);color:#fff;border-radius:0;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 .cart-fab.is-visible{display:flex}
 .cart-fab-left{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
 .cart-fab-left svg{width:18px;height:18px}
@@ -565,7 +568,7 @@ body.theme-b .modal{background:var(--navy);color:var(--cream)}
 @media (min-width:780px){.modal-handle{display:none}}
 .modal-head{padding:14px 20px 14px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:2}
 body.theme-b .modal-head{background:var(--navy)}
-.modal-thumb{width:64px;height:64px;border-radius:var(--r-md);flex-shrink:0;background:radial-gradient(circle at 50% 40%,var(--c1,#5a1d2d),var(--c2,#1e0612));display:flex;align-items:center;justify-content:center;font-size:30px}
+.modal-thumb{width:64px;height:64px;border-radius:var(--r-md);flex-shrink:0;background:var(--c1,var(--navy));display:flex;align-items:center;justify-content:center;font-size:30px}
 .modal-title-wrap{flex:1;min-width:0}
 .modal-cat{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--teal-on);margin-bottom:3px}
 .modal-title{font-family:var(--font-display);font-weight:600;font-size:22px;line-height:1.1;color:var(--fg);margin-bottom:2px;letter-spacing:-0.3px}
@@ -613,7 +616,7 @@ body.theme-b .boost{background:var(--navy-mid);color:var(--cream)}
 .sug-list::-webkit-scrollbar{display:none}
 .sug-card{flex-shrink:0;width:130px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:8px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s}
 .sug-card:hover{border-color:var(--accent);transform:translateY(-1px)}
-.sug-img{aspect-ratio:1/1;border-radius:var(--r-sm);background:radial-gradient(circle at 50% 40%,var(--c1,#5a1d2d),var(--c2,#1e0612));display:flex;align-items:center;justify-content:center;font-size:24px}
+.sug-img{aspect-ratio:1/1;border-radius:var(--r-sm);background:var(--c1,var(--navy));display:flex;align-items:center;justify-content:center;font-size:24px}
 .sug-name{font-family:var(--font-display);font-weight:600;font-size:12px;line-height:1.15;color:var(--fg)}
 body.theme-b .sug-name{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:11px}
 .sug-row{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800;letter-spacing:0.3px}
@@ -627,13 +630,13 @@ body.theme-b .modal-foot{background:var(--navy)}
 .modal-total .lbl{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--fg-faint)}
 .modal-total .val{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--accent);letter-spacing:-0.5px}
 body.theme-b .modal-total .val{font-family:'Archivo',sans-serif;font-weight:900;color:var(--gold)}
-body.theme-c .modal-total .val{font-family:'Anton',sans-serif;font-weight:400;color:var(--rust);font-size:26px}
+body.theme-c .modal-total .val{font-family:'Anton',sans-serif;font-weight:400;color:var(--teal);font-size:26px}
 .modal-foot .btn{padding:13px 20px;font-size:12px}
 
 /* CART VIEW (full cart, not single item) */
 .cart-view .cart-line{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
 .cart-view .cart-line:last-of-type{border-bottom:0;margin-bottom:10px}
-.cart-line-thumb{width:48px;height:48px;border-radius:var(--r-md);flex-shrink:0;background:radial-gradient(circle at 50% 40%,var(--c1,#5a1d2d),var(--c2,#1e0612));display:flex;align-items:center;justify-content:center;font-size:22px}
+.cart-line-thumb{width:48px;height:48px;border-radius:var(--r-md);flex-shrink:0;background:var(--c1,var(--navy));display:flex;align-items:center;justify-content:center;font-size:22px}
 .cart-line-body{flex:1;min-width:0}
 .cart-line-name{font-family:var(--font-display);font-weight:600;font-size:14px;line-height:1.15;color:var(--fg);margin-bottom:2px}
 .cart-line-meta{font-size:11px;color:var(--fg-faint);font-weight:500;line-height:1.4}
@@ -660,15 +663,15 @@ body.theme-b .insta{background:var(--navy);border-color:rgba(244,236,217,0.08)}
 body.theme-a .insta-head h3 em{font-style:italic;color:var(--teal-on);font-weight:500}
 body.theme-b .insta-head h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:22px}
 body.theme-c .insta-head h3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:28px}
-.insta-handle{font-family:'Caveat',cursive;font-size:18px;color:var(--accent);font-weight:700}
+.insta-handle{font-family:var(--font-body);font-size:14px;color:var(--accent);font-weight:800;letter-spacing:1px}
 .insta-link{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--fg-muted);display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid var(--line);border-radius:var(--r-full)}
 .insta-link:hover{border-color:var(--fg)}
 .insta-grid{padding:0 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 @media (min-width:560px){.insta-grid{grid-template-columns:repeat(6,1fr);gap:6px}}
-.insta-cell{aspect-ratio:1/1;background:linear-gradient(135deg,var(--c1,#5a1d2d),var(--c2,#1e0612));border-radius:var(--r-sm);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+.insta-cell{aspect-ratio:1/1;background:var(--c1,var(--navy));border-radius:var(--r-sm);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
 .insta-cell:hover{transform:scale(1.03)}
 .insta-cell .icon{font-size:32px;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.4))}
-.insta-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(0,0,0,0.45));opacity:0;transition:opacity .15s}
+.insta-cell::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);opacity:0;transition:opacity .15s}
 .insta-cell:hover::after{opacity:1}
 .insta-cell .meta{position:absolute;left:6px;bottom:6px;right:6px;font-size:10px;color:#fff;font-weight:700;letter-spacing:0.3px;opacity:0;transition:opacity .15s;display:flex;justify-content:space-between;align-items:center}
 .insta-cell:hover .meta{opacity:1}
@@ -693,11 +696,11 @@ body.theme-c .reviews-head-left h3{font-family:'Anton',sans-serif;font-weight:40
 
 .reviews-scroll{display:flex;gap:12px;padding:0 18px 4px;overflow-x:auto;scrollbar-width:none}
 .reviews-scroll::-webkit-scrollbar{display:none}
-.review-card{flex-shrink:0;width:300px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;display:flex;flex-direction:column;gap:10px}
+.review-card{flex-shrink:0;width:300px;background:var(--surface);border:1px solid var(--line);border-radius:0;padding:18px;display:flex;flex-direction:column;gap:10px}
 body.theme-b .review-card{background:var(--surface)}
 body.theme-c .review-card{border-radius:0;border:2px solid var(--navy)}
 .review-top{display:flex;align-items:center;gap:10px}
-.review-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--c1,#f5c32c),var(--c2,#e85d26));color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;flex-shrink:0}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--c1,var(--gold));color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;flex-shrink:0}
 .review-name{font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--fg);line-height:1.2;letter-spacing:-0.2px}
 body.theme-b .review-name{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px}
 .review-meta{font-size:10px;color:var(--fg-faint);letter-spacing:0.3px;font-weight:600;display:flex;align-items:center;gap:6px;margin-top:1px}
@@ -734,8 +737,35 @@ body.theme-c .loc-addr{font-family:'Anton',sans-serif;font-weight:400;text-trans
 .loc-hrs{margin-bottom:18px;font-size:13px;font-weight:600;color:var(--fg-muted);line-height:1.75}
 .loc-hrs strong{color:var(--fg);font-weight:800;display:inline-block;min-width:88px}
 .loc-actions{display:flex;gap:8px;flex-wrap:wrap}
+.loc-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.loc-badge{display:inline-flex;align-items:center;padding:7px 14px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;border-radius:var(--r-full)}
 
-.loc-card{aspect-ratio:16/10;background:var(--navy);border-radius:var(--r-lg);overflow:hidden;position:relative}
+/* ── CATERING SECTION ── */
+.catering-section{padding:40px 18px 48px;background:var(--navy);color:var(--cream)}
+@media(min-width:780px){.catering-section{padding:64px 32px}}
+.catering-inner{max-width:680px;margin:0 auto}
+.catering-section .eyebrow{color:rgba(244,236,217,0.6);margin-bottom:10px}
+.catering-section .dot{background:var(--teal)}
+.catering-h{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1.0;letter-spacing:-0.8px;color:var(--cream);margin-bottom:14px}
+@media(min-width:780px){.catering-h{font-size:46px}}
+.catering-desc{font-size:15px;line-height:1.7;color:rgba(244,236,217,0.75);margin-bottom:32px;max-width:560px}
+.catering-form{display:flex;flex-direction:column;gap:16px}
+.catering-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:559px){.catering-row{grid-template-columns:1fr}}
+.catering-field{display:flex;flex-direction:column;gap:6px}
+.catering-field label{font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(244,236,217,0.55)}
+.catering-field input,.catering-field textarea{background:rgba(244,236,217,0.08);border:1.5px solid rgba(244,236,217,0.16);padding:12px 14px;font-size:14px;font-family:inherit;color:var(--cream);outline:none;border-radius:var(--r-md);transition:border-color .15s;-webkit-appearance:none}
+.catering-field input::placeholder,.catering-field textarea::placeholder{color:rgba(244,236,217,0.3)}
+.catering-field input:focus,.catering-field textarea:focus{border-color:var(--teal)}
+.catering-field textarea{resize:vertical;min-height:110px}
+.catering-form .btn{align-self:flex-start;margin-top:4px}
+.cf-confirm{display:none;font-size:12px;font-weight:700;color:var(--teal);margin-top:10px;letter-spacing:0.3px}
+.cf-confirm.visible{display:block}
+.field-error{display:none;font-size:11px;font-weight:700;color:var(--gold);margin-top:5px;letter-spacing:0.3px}
+.catering-field.has-error .field-error{display:block}
+.catering-field.has-error input,.catering-field.has-error textarea{border-color:var(--gold)}
+
+.loc-card{aspect-ratio:16/10;background:var(--navy);border-radius:0;overflow:hidden;position:relative}
 body.theme-c .loc-card{border-radius:0}
 .loc-card svg{width:100%;height:100%;display:block}
 .loc-card-tag{position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--cream);font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;z-index:2}
@@ -745,7 +775,7 @@ body.theme-c .loc-card{border-radius:0}
 footer{background:var(--navy-deep);color:var(--cream);padding:36px 18px 22px}
 body.theme-c footer{border-top:3px solid var(--gold)}
 .foot-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
-@media (min-width:780px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:36px}}
+@media (min-width:780px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px}}
 .foot-brand{grid-column:1/-1}
 @media (min-width:780px){.foot-brand{grid-column:auto}}
 .foot-name{font-family:var(--font-display);font-weight:500;font-size:36px;color:var(--gold);line-height:0.95;letter-spacing:-1px;margin-bottom:8px;font-style:italic}
@@ -772,7 +802,7 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
 /* ── PHONE-FRAME ── mode-mobile on desktop locks the layout to phone width */
 @media (min-width:780px){
   body.mode-mobile{
-    background:linear-gradient(180deg,#1a1818 0%,#0a0a0a 100%);
+    background:#0a0a0a;
     min-height:100vh;
     padding:32px 0 56px;
   }
@@ -821,7 +851,9 @@ body.theme-c .foot-name{font-family:'Anton',sans-serif;font-weight:400;text-tran
   body.mode-mobile nav.topnav{height:60px !important;padding:0 16px !important}
   body.mode-mobile .brand-est{display:none !important}
   body.mode-mobile .brand-wordmark{height:38px !important}
-  body.mode-mobile .nav-pill{display:none !important}
+  body.mode-mobile .hero-split{flex-direction:column !important}
+  body.mode-mobile .hero-text-col{max-width:100% !important;padding:32px 22px 28px !important}
+  body.mode-mobile .hero-photo-col{flex:0 0 auto !important;width:100% !important;min-height:240px !important}
 }
 
 /* ── BIGGER LOGO IN NAV ── */
@@ -952,7 +984,7 @@ body.mode-mobile .card-img{flex:1 1 auto !important;aspect-ratio:auto !important
 body.mode-mobile .card-img .icon{font-size:54px !important}
 body.mode-mobile .card-body{
   position:absolute;left:0;right:0;bottom:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.78) 30%, rgba(0,0,0,0.35) 70%, transparent 100%);
+  background:rgba(0,0,0,0.72);
   color:#fff;
   padding:36px 12px 12px !important;
   gap:4px !important;
@@ -1012,6 +1044,36 @@ body.mode-mobile.theme-c .card-price{color:#fff !important}
 body.mode-mobile .nav-cart-btn{padding:8px 12px !important;font-size:10px !important}
 body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
 
+/* ═══════════════════════════════════════════════════════════════════════
+   SPLIT HERO — navy text block left / building photo right
+   ═══════════════════════════════════════════════════════════════════════ */
+.hero{background:var(--navy);padding:0 !important;overflow:hidden;position:relative}
+.hero-split{display:flex;flex-direction:column}
+@media(min-width:720px){.hero-split{flex-direction:row;min-height:480px}}
+.hero-text-col{flex:1;padding:44px 24px 40px;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:720px){.hero-text-col{padding:36px 48px 36px 40px;max-width:50%}}
+.hero-photo-col{flex:0 0 100%;min-height:260px;overflow:hidden;position:relative}
+@media(min-width:720px){.hero-photo-col{flex:1;min-height:auto}}
+.hero-photo-col img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+/* text colors on navy */
+.hero-text-col .hero-eyebrow{color:rgba(244,236,217,0.65)}
+.hero-text-col .hero-eyebrow .badge{background:rgba(244,236,217,0.12);color:var(--gold)}
+.hero-text-col .hero-h{color:var(--cream)}
+.hero-text-col .hero-h .accent{color:var(--gold)}
+.hero-text-col .hero-h em{color:var(--teal)}
+.hero-text-col .hero-pitch{color:rgba(244,236,217,0.78)}
+.hero-text-col .hero-meta-strip{color:rgba(244,236,217,0.5)}
+.hero-text-col .hero-meta-strip strong{color:var(--gold)}
+.hero-text-col .hero-meta-strip .dot{background:var(--teal)}
+.hero-text-col .btn-ghost{border-color:rgba(244,236,217,0.35);color:var(--cream)}
+.hero-insta{display:inline-flex;align-items:center;gap:8px;color:rgba(244,236,217,0.6);font-size:12px;font-weight:700;letter-spacing:0.3px;text-decoration:none;transition:color .15s;margin-top:6px}
+.hero-insta:hover{color:var(--teal)}
+.hero-insta svg{width:15px;height:15px;flex-shrink:0}
+/* smaller, cleaner headline */
+body.mode-mobile.theme-a .hero-h{font-size:30px !important;line-height:1.1 !important;letter-spacing:-0.5px !important;font-weight:400 !important}
+body.mode-web.theme-a .hero-h{font-size:30px !important;line-height:1.1 !important;letter-spacing:-0.5px !important;font-weight:400 !important}
+@media(min-width:720px){body.mode-web.theme-a .hero-h{font-size:38px !important;line-height:1.08 !important;letter-spacing:-0.7px !important}}
+
 </style>
 </head>
 <body class="theme-a mode-web">
@@ -1022,17 +1084,14 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
      NAV
      ═══════════════════════════════════════════════════════════════════════ -->
 <nav class="topnav">
-  <a href="/aryze" class="brand" aria-label="Aryze Eatery — Phoenix">
+  <a href="#top" class="brand" aria-label="Aryze Eatery — Phoenix">
     <img class="brand-wordmark" data-wordmark alt="Aryze Phoenix Eatery Arizona" width="120" height="68">
     <span class="brand-est">EST 2026<br>PHOENIX, AZ</span>
   </a>
   <div class="nav-actions">
     <a href="#menu" class="nav-pill">Menu</a>
-    <a href="#location" class="nav-pill">Find us</a>
-    <button class="nav-cart-btn" data-cart-open aria-label="Open cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-      Cart <span class="count" data-cart-count></span>
-    </button>
+    <a href="#catering" class="nav-pill">Catering</a>
+    <a href="#location" class="nav-pill">Contact</a>
   </div>
 </nav>
 
@@ -1040,45 +1099,36 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
      HERO (variant-aware via body class)
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="top">
-  <div class="hero-grid">
-    <div class="hero-text">
+  <div class="hero-split">
+    <div class="hero-text-col">
       <div class="hero-eyebrow"><span class="badge" data-hero-badge>001</span><span data-hero-eyebrow>The Healthy Drive-Thru · Phoenix, AZ · EST 2026</span></div>
       <h1 class="hero-h" data-hero-h><!-- filled by JS --></h1>
-      <div class="hero-tag" data-hero-tag><!-- filled by JS --></div>
+      <div data-hero-tag style="display:none"></div>
       <p class="hero-pitch" data-hero-pitch><!-- filled by JS --></p>
       <div class="hero-ctas">
-        <a href="#menu" class="btn btn-primary btn-arrow">Order now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="https://order.spoton.com/BL-38A5-B0A5-4D01" class="btn btn-primary btn-arrow" target="_blank" rel="noopener">Order Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         <a href="#location" class="btn btn-ghost">Roll through</a>
       </div>
+      <a href="https://instagram.com/aryzeeatery" target="_blank" rel="noopener" class="hero-insta" aria-label="Follow Aryze Eatery on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        Follow <strong style="color:var(--teal)">@aryzeeatery</strong>
+      </a>
       <div class="hero-meta-strip">
         <span><span class="dot"></span> <strong>Open now</strong></span>
-        <span>Drive-thru + Grab & Go</span>
-        <span>3-min avg wait</span>
+        <span>Drive-thru + Grab &amp; Go</span>
       </div>
     </div>
-    <div class="hero-art" data-hero-art>
-      <!-- Variant-specific SVG injected by JS -->
+    <div class="hero-photo-col">
+      <img src="assets/hero.jpeg" alt="Aryze Eatery drive-thru" loading="eager">
       <div class="hero-art-overlay">
         <span class="hero-art-stamp"><span class="dot"></span>Open · 1701 S Central</span>
-        <span class="hero-art-temp">102°<small>Phoenix · right now</small></span>
+        <span class="hero-art-temp" id="phx-temp">--°<small>Phoenix · right now</small></span>
       </div>
+      <div data-hero-art style="display:none"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════
-     BENEFITS STRIP
-     ═══════════════════════════════════════════════════════════════════════ -->
-<div class="benefits" aria-label="Why Aryze">
-  <div class="benefits-scroll">
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <strong>3-min</strong> drive-thru</span>
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Grab &amp; Go</span>
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg> Order ahead</span>
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg> <strong>100%</strong> organic açaí</span>
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 L 14 8 L 21 9 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 9 L 10 8 Z"/></svg> <strong>48g</strong> poke protein</span>
-    <span class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="9" y1="9" x2="9" y2="10"/><line x1="15" y1="9" x2="15" y2="10"/><path d="M8 14q4 4 8 0"/></svg> Made daily</span>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      MENU
@@ -1086,29 +1136,60 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
 <section class="menu-section" id="menu">
   <div class="menu-head">
     <div>
-      <div class="eyebrow"><span class="dot"></span>The menu · Aryze #001</div>
+      <div class="eyebrow"><span class="dot"></span>The menu</div>
       <h2 data-menu-h>What we're<br>serving up<em>.</em></h2>
     </div>
     <p class="menu-note">Made fresh daily · order ahead from your car or roll up to the window.</p>
   </div>
-  <div class="menu-anchors">
-    <button class="anchor-btn" data-anchor="bowls">Bowls <span class="count">6</span></button>
-    <button class="anchor-btn" data-anchor="meals">Meals <span class="count">4</span></button>
-    <button class="anchor-btn" data-anchor="beverages">Beverages <span class="count">8</span></button>
+  <div class="menu-image-wrap">
+    <img src="assets/Aryze Menu.png" alt="Aryze Eatery full menu" class="menu-img" loading="lazy">
   </div>
-  <div class="menu-blocks" id="menu-blocks"></div>
+  <div id="menu-blocks" style="display:none"></div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     INSTAGRAM
+     CATERING
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="insta">
-  <div class="insta-head">
-    <h3>From the gram <em>·</em> <span class="insta-handle">@aryzeeatery</span></h3>
-    <a href="https://instagram.com/aryzeeatery" target="_blank" rel="noopener" class="insta-link">Follow → <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+<section class="catering-section" id="catering">
+  <div class="catering-inner">
+    <div class="eyebrow"><span class="dot"></span>Catering &amp; Events</div>
+    <h2 class="catering-h">Feed your crew<em>.</em></h2>
+    <p class="catering-desc">Aryze brings the same fresh, made-to-order food from our drive-thru to your next event. We cater corporate lunches, office happy hours, and private gatherings — from 10 to 200 guests. Tell us about your event and we'll build a menu around you.</p>
+    <form class="catering-form" id="catering-form" novalidate>
+      <div class="catering-row">
+        <div class="catering-field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" type="text" name="name" placeholder="Your name" required aria-describedby="cf-name-err" aria-invalid="false">
+          <span class="field-error" id="cf-name-err" role="alert">Please enter your name.</span>
+        </div>
+        <div class="catering-field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" type="email" name="email" placeholder="your@email.com" required aria-describedby="cf-email-err" aria-invalid="false">
+          <span class="field-error" id="cf-email-err" role="alert">Please enter a valid email address.</span>
+        </div>
+      </div>
+      <div class="catering-row">
+        <div class="catering-field">
+          <label for="cf-date">Event Date</label>
+          <input id="cf-date" type="date" name="date">
+        </div>
+        <div class="catering-field">
+          <label for="cf-guests">Guest Count</label>
+          <input id="cf-guests" type="number" name="guests" placeholder="Approx. guests" min="1">
+        </div>
+      </div>
+      <div class="catering-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your event — type, location, dietary needs, etc."></textarea>
+      </div>
+      <div class="catering-form-foot">
+        <button type="submit" class="btn btn-primary btn-arrow" id="cf-submit">Send Inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <p class="cf-confirm" id="cf-confirm" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
-  <div class="insta-grid" id="insta-grid"></div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      REVIEWS
@@ -1125,8 +1206,8 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
         </span>
-        <span class="score">4.9</span>
-        <span class="count">· 247 Google reviews</span>
+        <span class="score">5.0</span>
+        <span class="count">· 19 Google reviews</span>
       </div>
     </div>
     <a href="https://www.google.com/maps/search/Aryze+Eatery+Phoenix" target="_blank" rel="noopener" class="reviews-link">All reviews → <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
@@ -1140,29 +1221,26 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
 <section class="location" id="location">
   <div class="loc-grid">
     <div>
-      <p class="loc-l-eyebrow">Find us · Aryze #001</p>
+      <p class="loc-l-eyebrow">Find us · Phoenix, AZ</p>
       <h2 class="loc-h" data-loc-h>Roll up.<br>Drive <em>through.</em></h2>
-      <p class="loc-addr">1701 S Central Ave</p>
+      <p class="loc-addr"><a href="https://www.google.com/maps/search/Aryze+Eatery+1701+S+Central+Ave+Phoenix+AZ" target="_blank" rel="noopener">1701 S Central Ave</a></p>
       <p class="loc-cross">Phoenix, AZ 85004 · Central + Mojave · Downtown</p>
       <div class="loc-hrs">
-        <div><strong>Mon — Fri</strong> 7:00 AM – 7:00 PM</div>
-        <div><strong>Saturday</strong> 8:00 AM – 5:00 PM</div>
-        <div><strong>Sunday</strong> 8:00 AM – 5:00 PM</div>
+        <div><strong>Mon — Fri</strong> 7:00 AM – 4:00 PM</div>
+        <div><strong>Sat — Sun</strong> 8:00 AM – 4:00 PM</div>
+      </div>
+      <div class="loc-badges">
+        <span class="loc-badge">5 min drive from Diamondback Stadium</span>
       </div>
       <div class="loc-actions">
-        <a href="https://maps.google.com/?q=1701+S+Central+Ave+Phoenix+AZ" target="_blank" rel="noopener" class="btn btn-primary btn-arrow">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+        <a href="https://maps.google.com/?q=Aryze+Eatery+Phoenix+AZ" target="_blank" rel="noopener" class="btn btn-primary btn-arrow">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
         <a href="tel:+16026889106" class="btn btn-ghost">(602) 688-9106</a>
+        <a href="mailto:admin@aryzeeatery.com" class="btn btn-ghost">admin@aryzeeatery.com</a>
       </div>
     </div>
     <div class="loc-card" aria-hidden="true">
       <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="lcSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#1c4060"/>
-            <stop offset="1" stop-color="#0a1c2e"/>
-          </linearGradient>
-        </defs>
-        <rect width="600" height="380" fill="url(#lcSky)"/>
+        <rect width="600" height="380" fill="#0a1c2e"/>
         <circle cx="480" cy="80" r="32" fill="#f5c32c"/>
         <g stroke="#f5c32c" stroke-width="2.5" stroke-linecap="round" opacity="0.9">
           <line x1="480" y1="32" x2="480" y2="42"/>
@@ -1226,25 +1304,19 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
       <a href="#menu">Bowls</a>
       <a href="#menu">Meals</a>
       <a href="#menu">Beverages</a>
-      <a href="#menu">Catering</a>
+      <a href="#catering">Catering</a>
     </div>
     <div class="foot-col">
-      <h4>Visit</h4>
-      <a href="#location">Aryze #001</a>
-      <a href="#location">Hours</a>
-      <a href="tel:+16026889106">(602) 688-9106</a>
-      <a href="#">Careers</a>
-    </div>
-    <div class="foot-col">
-      <h4>Follow</h4>
+      <h4>Contact</h4>
       <a href="https://instagram.com/aryzeeatery" target="_blank" rel="noopener">@aryzeeatery</a>
-      <a href="#">Tiktok</a>
-      <a href="mailto:hello@aryzeeatery.com">hello@aryzeeatery.com</a>
+      <a href="mailto:admin@aryzeeatery.com">admin@aryzeeatery.com</a>
+      <a href="tel:+16026889106">(602) 688-9106</a>
+      <a href="#location">Hours &amp; Location</a>
     </div>
   </div>
   <div class="foot-bot">
     <span>© 2026 Aryze Eatery · Phoenix, AZ</span>
-    <span>Shout us out · @aryzeeatery</span>
+    <span>1701 S Central Ave · Phoenix, AZ 85004</span>
   </div>
 </footer>
 
@@ -1275,6 +1347,64 @@ body.mode-mobile .nav-cart-btn svg{width:14px;height:14px}
   <div id="modal-content"><!-- filled dynamically --></div>
 </div>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=11"></script>
+<script>
+(function() {
+  function setError(id, errId, show) {
+    const el = document.getElementById(id);
+    el.setAttribute('aria-invalid', show ? 'true' : 'false');
+    el.closest('.catering-field').classList.toggle('has-error', show);
+  }
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  ['cf-name', 'cf-email'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => setError(id, id + '-err', false));
+  });
+
+  document.getElementById('catering-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name  = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    let ok = true;
+
+    setError('cf-name',  'cf-name-err',  !name);
+    setError('cf-email', 'cf-email-err', !email || !validEmail(email));
+    if (!name)                    ok = false;
+    if (!email || !validEmail(email)) ok = false;
+
+    if (!ok) {
+      document.querySelector('.catering-field.has-error input').focus();
+      return;
+    }
+
+    const date    = document.getElementById('cf-date').value;
+    const guests  = document.getElementById('cf-guests').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const body = [
+      'Name: '        + name,
+      'Email: '       + email,
+      'Event Date: '  + (date    || '—'),
+      'Guest Count: ' + (guests  || '—'),
+      '',
+      'Message:',
+      message || '—',
+    ].join('\n');
+    const btn = document.getElementById('cf-submit');
+    const confirm = document.getElementById('cf-confirm');
+    btn.disabled = true;
+    btn.textContent = 'Opening email…';
+    window.location.href =
+      'mailto:admin@aryzeeatery.com'
+      + '?subject=' + encodeURIComponent('Catering Inquiry')
+      + '&body='    + encodeURIComponent(body);
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = 'Send Inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+      confirm.textContent = '✓ Your email client should have opened — send when ready.';
+      confirm.classList.add('visible');
+    }, 1200);
+  });
+})();
+</script>
 </body>
 </html>
