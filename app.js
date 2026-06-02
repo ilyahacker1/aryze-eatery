@@ -21,7 +21,7 @@
   const params = new URLSearchParams(window.location.search);
   // variant comes from ?v=… or from the trailing path segment (/aryze/a, /aryze/b, …)
   const pathTail = (window.location.pathname.match(/\/aryze\/([a-f])\/?$/i) || [])[1];
-  const variant = ((params.get('v') || pathTail || 'a') + '').toLowerCase();
+  const variant = ((params.get('v') || pathTail || 'b') + '').toLowerCase();
   const cfg = VARIANT_MAP[variant] || VARIANT_MAP.a;
   document.body.classList.remove(
     'theme-a','theme-b','theme-c','theme-d','theme-e','theme-f',
