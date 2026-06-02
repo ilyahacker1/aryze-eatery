@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08182a">
+<title>Aryze Eatery — A/B/C Concept Test</title>
+<meta name="description" content="Three design directions for Aryze Eatery, Phoenix's first healthy drive-thru. Compare side-by-side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#050d18;color:#f4ecd9;overflow:hidden;-webkit-font-smoothing:antialiased}
+
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,13,24,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,236,217,0.08);height:60px;display:flex;align-items:center;padding:0 16px;gap:14px;padding-top:env(safe-area-inset-top)}
+.brand{display:flex;align-items:center;gap:9px;flex-shrink:0;color:#f5c32c;font-size:12px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+.brand::before{content:'';width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#f5c32c 30%,transparent 31%);border:2px solid #f5c32c;flex-shrink:0}
+.brand small{display:none;color:rgba(244,236,217,0.4);font-weight:600;letter-spacing:2px;font-size:10px;margin-left:6px}
+@media (min-width:680px){.brand small{display:inline}}
+
+.tabs{display:flex;gap:5px;margin-left:auto;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-right:6px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:8px 14px;font-size:11px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;background:rgba(244,236,217,0.04);color:rgba(244,236,217,0.55);border:1px solid rgba(244,236,217,0.08);cursor:pointer;font-family:inherit;border-radius:999px;transition:all .15s;display:flex;flex-direction:column;align-items:center;line-height:1.2;gap:1px}
+.tab:hover{color:#fff;border-color:rgba(244,236,217,0.2)}
+.tab.active{background:#f5c32c;color:#0a1c2e;border-color:#f5c32c}
+.tab .lbl{display:block;font-size:9px;font-weight:600;letter-spacing:1px;opacity:0.6;text-transform:none;letter-spacing:0.5px}
+.tab:not(.active) .lbl{color:rgba(244,236,217,0.45)}
+
+.viewport{position:fixed;top:60px;left:0;right:0;bottom:0;background:#fbf6e9}
+iframe{width:100%;height:100%;border:0;background:#fbf6e9;display:block}
+
+.helper{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(5,13,24,0.94);border:1px solid rgba(244,236,217,0.08);backdrop-filter:blur(14px);padding:8px 14px;border-radius:999px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,236,217,0.55);z-index:40;display:flex;align-items:center;gap:10px;pointer-events:none;animation:fadeOut 8s ease-in 4s forwards}
+.helper strong{color:#f5c32c;font-weight:800}
+.helper kbd{background:rgba(244,236,217,0.08);border:1px solid rgba(244,236,217,0.15);padding:2px 6px;border-radius:4px;font-family:inherit;font-size:9px;color:#fff}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+@media (max-width:480px){.helper{display:none}}
+
+.share{margin-left:8px;flex-shrink:0;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(244,236,217,0.45);border:1px solid rgba(244,236,217,0.1);padding:8px 12px;border-radius:999px;transition:all .15s;background:none;cursor:pointer;font-family:inherit;display:none}
+@media (min-width:680px){.share{display:inline-flex}}
+.share:hover{color:#f5c32c;border-color:#f5c32c}
+.share.ok{color:#2bb6a8;border-color:#2bb6a8}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Aryze<small>A/B/C concept compare</small></div>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-v="a" role="tab">A · Heritage<span class="lbl">mobile · serif paper</span></button>
+    <button class="tab" data-v="b" role="tab">B · Heritage<span class="lbl">web · serif paper</span></button>
+    <button class="tab" data-v="c" role="tab">C · Cinematic<span class="lbl">mobile · dark gold</span></button>
+    <button class="tab" data-v="d" role="tab">D · Cinematic<span class="lbl">web · dark gold</span></button>
+    <button class="tab" data-v="e" role="tab">E · Pop Chain<span class="lbl">mobile · color blocks</span></button>
+    <button class="tab" data-v="f" role="tab">F · Pop Chain<span class="lbl">web · color blocks</span></button>
+  </div>
+  <button class="share" id="share-btn">Copy link</button>
+</header>
+
+<div class="viewport"><iframe id="frame" src="/aryze/app.html?v=a" title="Aryze concept" loading="eager"></iframe></div>
+
+<div class="helper">Switch · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> desktop &nbsp; <kbd>4</kbd><kbd>5</kbd><kbd>6</kbd> mobile</div>
+
+<script>
+(function(){
+  const frame = document.getElementById('frame');
+  const tabs = document.querySelectorAll('.tab');
+  const share = document.getElementById('share-btn');
+
+  const VALID = ['a','b','c','d','e','f'];
+  const KEYS = { '1':'a', '2':'b', '3':'c', '4':'d', '5':'e', '6':'f' };
+
+  function go(v, el) {
+    if (!VALID.includes(v)) v = 'a';
+    frame.src = '/aryze/app.html?v=' + v;
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.v === v));
+    history.replaceState(null, '', '?v=' + v);
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => go(t.dataset.v, t)));
+
+  window.addEventListener('keydown', e => {
+    if (KEYS[e.key]) go(KEYS[e.key]);
+  });
+
+  // sync from URL on load
+  const initial = new URLSearchParams(location.search).get('v');
+  if (initial && VALID.includes(initial)) go(initial);
+
+  share.addEventListener('click', async () => {
+    const url = location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      share.textContent = '✓ Copied';
+      share.classList.add('ok');
+      setTimeout(() => { share.textContent = 'Copy link'; share.classList.remove('ok'); }, 1800);
+    } catch {
+      share.textContent = url;
+    }
+  });
+})();
+</script>
+</body>
+</html>
